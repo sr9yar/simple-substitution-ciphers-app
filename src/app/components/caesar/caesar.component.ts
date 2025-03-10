@@ -10,30 +10,30 @@ import { Caesar } from 'simple-substitution-ciphers';
 })
 export class CaesarComponent {
 
-  private caesar: Caesar = new Caesar();
+  private cipher: Caesar = new Caesar();
 
   constructor() {
-    this.caesar.encrypt();
+    this.cipher.encrypt();
   }
   /**
    * ciphertextString
    */
   get plaintextString(): string {
-    return this.caesar.plaintextString;
+    return this.cipher.plaintextString;
   }
 
   /**
    * ciphertextString
    */
   get ciphertextString(): string {
-    return this.caesar.ciphertextString;
+    return this.cipher.ciphertextString;
   }
 
   encrypt() {
-    this.caesar.encrypt()
+    this.cipher.encrypt()
   }
 
   decrypt() {
-    this.caesar.decrypt()
+    this.cipher.decrypt()
   }
 }
