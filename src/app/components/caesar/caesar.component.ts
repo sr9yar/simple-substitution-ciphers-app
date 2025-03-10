@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -29,6 +30,7 @@ import { tap } from 'rxjs';
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,
+    CommonModule,
   ],
   templateUrl: './caesar.component.html',
   styleUrl: './caesar.component.scss',
@@ -65,7 +67,7 @@ export class CaesarComponent implements OnInit {
 
     this.form.get('plaintext')?.setValue(this.cipher.plaintextString);
     this.form.get('ciphertext')?.setValue(this.cipher.ciphertextString);
-    // this.form.get('alphabet')?.setValue(this.cipher.alphabet);
+    this.form.get('alphabet')?.setValue(this.cipher.alphabet.join(''));
     this.form.get('shift')?.setValue(this.cipher.shift);
 
     this.form.get('shift')?.valueChanges
@@ -95,8 +97,12 @@ export class CaesarComponent implements OnInit {
    */
   encrypt() {
     this.cipher.shift = this.form.get('shift')?.value;
+    this.cipher.setAlphabet(this.form.get('alphabet')?.value);
     this.cipher.setPlaintext(this.form.get('plaintext')?.value);
+
     this.encrypted = this.cipher.encrypt();
+
+    console.log(this.cipher.logs.length);
   }
 
   /**
@@ -104,7 +110,22 @@ export class CaesarComponent implements OnInit {
    */
   decrypt() {
     this.cipher.shift = this.form.get('shift')?.value;
+    this.cipher.setAlphabet(this.form.get('alphabet')?.value);
     this.cipher.setCiphertext(this.form.get('ciphertext')?.value);
     this.decrypted = this.cipher.decrypt();
+  }
+
+  /**
+   * logs
+   */
+  get logs(): string[] {
+    return this.cipher.logs;
+  }
+
+  /**
+   * has logs
+   */
+  get hasLogs(): boolean {
+    return !!this.cipher.logs.length;
   }
 }

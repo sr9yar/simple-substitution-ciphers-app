@@ -92,3 +92,14 @@
   </mat-grid-list>
 
 </form>
+
+
+<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
+
+<h2 *ngIf="hasLogs"> Execution log </h2>
+
+<div *ngFor="let log of logs">
+  <pre>
+    {{log}}
+  </pre>
+</div>
