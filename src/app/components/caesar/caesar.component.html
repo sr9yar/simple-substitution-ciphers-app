@@ -1,12 +1,94 @@
 <h1>Caesar cipher</h1>
 
 
-<div class="flex">
+<div class="flex mb-2">
   <div class="p-1"> Plaintext </div>
   <div class="bold p-1"> {{ plaintextString }} </div>
 </div>
 
-<div class="flex">
+<div class="flex mb-2">
   <div class="p-1"> Ciphertext </div>
   <div class="bold p-1"> {{ ciphertextString }} </div>
 </div>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<form [formGroup]="form">
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile>
+
+      <mat-form-field class="w100">
+        <mat-label>Plaintext</mat-label>
+        <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+
+      <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="p-2 w100">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            {{encrypted}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>ciphertext</mat-label>
+        <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <div class="w100">
+        <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="p-2 w100">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            {{decrypted}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-label>
+        Shift: {{form.get('shift')?.value}}
+      </mat-label>
+
+      <mat-slider class="w100" [min]="shiftMin" [max]="shiftMax" step="1">
+        <input formControlName="shift" matSliderThumb value="-3">
+      </mat-slider>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      &nbsp;
+    </mat-grid-tile>
+
+
+
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Alphabet</mat-label>
+        <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      &nbsp;
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+
+</form>
