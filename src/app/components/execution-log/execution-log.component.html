@@ -1,0 +1,9 @@
+<div>
+  <h2 *ngIf="hasLogs"> Execution log </h2>
+
+  <div *ngFor="let log of logs">
+    <pre>
+    {{log}}
+  </pre>
+  </div>
+</div>

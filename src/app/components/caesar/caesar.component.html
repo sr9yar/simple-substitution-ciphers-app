@@ -61,7 +61,7 @@
 
     <mat-grid-tile>
       <mat-label>
-        Shift: {{form.get('shift')?.value}}
+        Shift ({{form.get('shift')?.value}}):
       </mat-label>
 
       <mat-slider class="w100" [min]="shiftMin" [max]="shiftMax" step="1">
@@ -78,7 +78,7 @@
 
     <mat-grid-tile>
       <mat-form-field class="w100">
-        <mat-label>Alphabet</mat-label>
+        <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
         <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
@@ -96,10 +96,4 @@
 
 <mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
 
-<h2 *ngIf="hasLogs"> Execution log </h2>
-
-<div *ngFor="let log of logs">
-  <pre>
-    {{log}}
-  </pre>
-</div>
+<app-execution-log [logs]="logs"></app-execution-log>
