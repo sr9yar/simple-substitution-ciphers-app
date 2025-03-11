@@ -14,6 +14,113 @@
 
 
 
-<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
+<form [formGroup]="form">
+  <mat-grid-list cols="2" rowHeight="4:1">
+    <mat-grid-tile>
 
+      <mat-form-field class="w100">
+        <mat-label>Plaintext</mat-label>
+        <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <div class="p-2 ml-2">
+        <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+      </div>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="p-2 w100">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            <pre>{{encrypted}}</pre>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>ciphertext</mat-label>
+        <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <div class="p-2 ml-2">
+        <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="p-2 w100">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            <pre>{{decrypted}}</pre>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Key α₁</mat-label>
+        <input matInput formControlName="keyA1" type="number">
+        @if (form.get('keyA1')?.hasError('coprime')) {
+        <mat-error>{{form.get('keyA1')?.errors?.['coprime'].value}}</mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Key β₁</mat-label>
+        <input matInput formControlName="keyB1" type="number">
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Key α₂</mat-label>
+        <input matInput formControlName="keyA2" type="number">
+        @if (form.get('keyA2')?.hasError('coprime')) {
+        <mat-error>{{form.get('keyA2')?.errors?.['coprime'].value}}</mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Key β₂</mat-label>
+        <input matInput formControlName="keyB2" type="number">
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="w100">
+        <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
+        <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      &nbsp;
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+
+</form>
+
+
+
+
+
+<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
 <app-execution-log [logs]="logs"></app-execution-log>
+
+
+<mat-divider class="mb-2"></mat-divider>
+<app-frequency-analysis [alphabetLanguage]="'ru'"></app-frequency-analysis>

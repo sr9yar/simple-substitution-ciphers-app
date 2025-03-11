@@ -14,7 +14,7 @@
 <mat-divider class="mb-2"></mat-divider>
 
 <form [formGroup]="form">
-  <mat-grid-list cols="2" rowHeight="3:1">
+  <mat-grid-list cols="2" rowHeight="4:1">
     <mat-grid-tile>
 
       <mat-form-field class="w100">
@@ -22,8 +22,10 @@
         <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
+      <div class="p-2 ml-2">
+        <button (click)="encrypt()" mat-flat-button>Encrypt</button>
 
-      <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+      </div>
 
     </mat-grid-tile>
 
@@ -31,7 +33,7 @@
       <div class="p-2 w100">
         <mat-card appearance="outlined">
           <mat-card-content>
-            {{encrypted}}
+            <pre>{{encrypted}}</pre>
           </mat-card-content>
         </mat-card>
       </div>
@@ -43,7 +45,7 @@
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
-      <div class="w100">
+      <div class="p-2 ml-2">
         <button (click)="decrypt()" mat-flat-button>Decrypt</button>
       </div>
     </mat-grid-tile>
@@ -52,7 +54,7 @@
       <div class="p-2 w100">
         <mat-card appearance="outlined">
           <mat-card-content>
-            {{decrypted}}
+            <pre>{{decrypted}}</pre>
           </mat-card-content>
         </mat-card>
       </div>
@@ -74,8 +76,6 @@
     </mat-grid-tile>
 
 
-
-
     <mat-grid-tile>
       <mat-form-field class="w100">
         <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
@@ -93,7 +93,10 @@
 
 </form>
 
-
 <mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
 
 <app-execution-log [logs]="logs"></app-execution-log>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<app-frequency-analysis [alphabetLanguage]="'en'"></app-frequency-analysis>

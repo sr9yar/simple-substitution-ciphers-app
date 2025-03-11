@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
+import { FrequencyAnalysisComponent } from '../frequency-analysis/frequency-analysis.component';
 
 
 
@@ -33,6 +34,7 @@ import { ExecutionLogComponent } from '../execution-log/execution-log.component'
     MatButtonModule,
     CommonModule,
     ExecutionLogComponent,
+    FrequencyAnalysisComponent,
   ],
   templateUrl: './caesar.component.html',
   styleUrl: './caesar.component.scss',

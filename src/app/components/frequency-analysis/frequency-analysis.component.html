@@ -1,0 +1,11 @@
+<h2>Frequency analysis</h2>
+
+<h3>{{title}}</h3>
+
+<div #containerRef class="chart-wrapper">
+  <ngx-charts-bar-vertical [view]="[containerRef.offsetWidth, containerRef.offsetWidth*0.4]" [scheme]="colorScheme"
+    [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+</div>

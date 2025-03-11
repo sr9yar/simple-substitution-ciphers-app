@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { CaesarComponent } from './components/caesar/caesar.component';
 import { AffineComponent } from './components/affine/affine.component';
 import { AffineRecurrentComponent } from './components/affine-recurrent/affine-recurrent.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   {
@@ -15,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'affine-recurrent',
     component: AffineRecurrentComponent,
+  },
+  {
+    path: '',
+    component: HomeComponent,
   },
 ];
