@@ -3,6 +3,9 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['test-data']">
+      Test Data
+    </button>
     <button mat-menu-item [routerLink]="['caesar']">
       Caesar
     </button>
@@ -17,7 +20,9 @@
 
   <span>Simple Substitution Ciphers</span>
   <span class="spacer"></span>
-
+  <button mat-button [routerLink]="['test-data']">
+    Test Data
+  </button>
   <button mat-button [routerLink]="['caesar']">
     Caesar
   </button>

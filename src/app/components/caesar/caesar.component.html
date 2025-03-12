@@ -94,9 +94,10 @@
 </form>
 
 <mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
-
 <app-execution-log [logs]="logs"></app-execution-log>
 
 <mat-divider class="mb-2"></mat-divider>
-
 <app-frequency-analysis [alphabetLanguage]="'en'"></app-frequency-analysis>
+
+<app-frequency-analysis [encryptedText]="ciphertextString" [sort]="'asc'"
+  [alphabetLanguage]="'en'"></app-frequency-analysis>
