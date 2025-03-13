@@ -7,6 +7,7 @@ import {
   FREQUENCY_TEST_RUSSIAN,
   RANDOM_TEXT
 } from '../../constants';
+import { ALPHABET_ENGLISH, ALPHABET_RUSSIAN } from 'simple-substitution-ciphers';
 
 @Component({
   selector: 'app-test-data',
@@ -23,5 +24,7 @@ export class TestDataComponent {
     RANDOM_TEXT,
     ALPHABET_FREQUENCY_MATCH_ENGLISH,
     ALPHABET_FREQUENCY_MATCH_RUSSIAN,
+    ALPHABET_RUSSIAN,
+    ALPHABET_ENGLISH,
   };
 }

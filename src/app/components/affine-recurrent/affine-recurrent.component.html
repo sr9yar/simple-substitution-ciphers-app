@@ -47,7 +47,7 @@
 
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
         <mat-label>Plaintext</mat-label>
@@ -85,10 +85,10 @@
 
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
-        <mat-label>ciphertext</mat-label>
+        <mat-label>Ciphertext</mat-label>
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
@@ -186,8 +186,8 @@
 
 
 <mat-divider class="mb-2"></mat-divider>
-<app-frequency-analysis [alphabetLanguage]="'ru'"></app-frequency-analysis>
+<app-frequency-analysis [alphabetLanguage]="alphabetLanguage"></app-frequency-analysis>
 
 
 <app-frequency-analysis [encryptedText]="ciphertextString" [sort]="'asc'"
-  [alphabetLanguage]="'ru'"></app-frequency-analysis>
+  [alphabetLanguage]="alphabetLanguage"></app-frequency-analysis>

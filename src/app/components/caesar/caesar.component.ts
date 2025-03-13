@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Caesar } from 'simple-substitution-ciphers';
+import { ALPHABET_RUSSIAN, Caesar } from 'simple-substitution-ciphers';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +15,7 @@ import { tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { FrequencyAnalysisComponent } from '../frequency-analysis/frequency-analysis.component';
+import { Language } from '../../types/language.type';
 
 
 
@@ -45,6 +46,8 @@ export class CaesarComponent implements OnInit {
   encrypted: string = '[encrypted]';
 
   decrypted: string = '[decrypted]';
+
+  alphabetLanguage: Language = 'en';
 
   form: FormGroup = new FormGroup({
     'plaintext': new FormControl(),
@@ -125,8 +128,22 @@ export class CaesarComponent implements OnInit {
    */
   setAlphabet() {
     this.cipher.setAlphabet(this.form.get('alphabet')?.value);
+
+    this.detectAlphabetLanguage();
     this.shiftMax = this.cipher.mod;
     this.shiftMin = -this.cipher.mod;
+  }
+
+  /**
+   * Alphabet language
+   */
+  detectAlphabetLanguage() {
+    const formAlphabet = this.form.get('alphabet')?.value;
+    if (ALPHABET_RUSSIAN === formAlphabet) {
+      this.alphabetLanguage = 'ru';
+      return
+    }
+    this.alphabetLanguage = 'en';
   }
 
   /**

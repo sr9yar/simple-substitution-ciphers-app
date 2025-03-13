@@ -7,11 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
-import { AffineRecurrent, areCoprime } from 'simple-substitution-ciphers';
+import { AffineRecurrent, ALPHABET_RUSSIAN, areCoprime } from 'simple-substitution-ciphers';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { FrequencyAnalysisComponent } from "../frequency-analysis/frequency-analysis.component";
 import { tap } from 'rxjs';
 import { coprimeValidator } from '../../validators/coprime.validator';
+import { Language } from '../../types/language.type';
 
 
 
@@ -40,6 +41,8 @@ export class AffineRecurrentComponent {
   encrypted: string = '[encrypted]';
 
   decrypted: string = '[decrypted]';
+
+  alphabetLanguage: Language = 'ru';
 
   form: FormGroup = new FormGroup({
     'plaintext': new FormControl(),
@@ -140,6 +143,19 @@ export class AffineRecurrentComponent {
 
   }
 
+
+  /**
+   * Alphabet language
+   */
+  detectAlphabetLanguage() {
+    const formAlphabet = this.form.get('alphabet')?.value;
+    if (ALPHABET_RUSSIAN === formAlphabet) {
+      this.alphabetLanguage = 'ru';
+      return
+    }
+    this.alphabetLanguage = 'en';
+  }
+
   /**
    * ciphertextString
    */
@@ -177,6 +193,8 @@ export class AffineRecurrentComponent {
    */
   setAlphabet() {
     this.cipher.setAlphabet(this.form.get('alphabet')?.value);
+    this.detectAlphabetLanguage();
+
   }
 
 

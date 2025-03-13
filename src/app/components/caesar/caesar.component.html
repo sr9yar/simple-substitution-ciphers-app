@@ -47,7 +47,7 @@
   <!-- -------------------------------------------- -->
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
         <mat-label>Plaintext</mat-label>
@@ -68,7 +68,7 @@
   <!-- -------------------------------------------- -->
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 ">
       <button (click)="decrypt()" mat-flat-button>Decrypt</button>
 
     </div>
@@ -80,12 +80,12 @@
   <!-- -------------------------------------------- -->
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 min35">
 
 
 
       <mat-form-field class="w100">
-        <mat-label>ciphertext</mat-label>
+        <mat-label>Ciphertext</mat-label>
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="30"></textarea>
       </mat-form-field>
@@ -143,7 +143,7 @@
 <app-execution-log [logs]="logs"></app-execution-log>
 
 <mat-divider class="mb-2"></mat-divider>
-<app-frequency-analysis [alphabetLanguage]="'en'"></app-frequency-analysis>
+<app-frequency-analysis [alphabetLanguage]="alphabetLanguage"></app-frequency-analysis>
 
 <app-frequency-analysis [encryptedText]="ciphertextString" [sort]="'asc'"
-  [alphabetLanguage]="'en'"></app-frequency-analysis>
+  [alphabetLanguage]="alphabetLanguage"></app-frequency-analysis>
