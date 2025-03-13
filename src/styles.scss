@@ -10,16 +10,45 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.flex {
-  display: flex;
-}
-
 .bold {
   font-weight: bold;
 }
 
+/** ------------------ */
+
+.box-outlined {
+  border: 1px solid rgb(196, 198, 208);
+  padding: 16px;
+  background-color: rgb(250, 249, 253);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 0px, rgba(0, 0, 0, 0.14) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 0px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
 
 
+/** ------------------ */
+
+
+.flex {
+  display: flex;
+  align-items: stretch;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.flex-grow-3 {
+  flex-grow: 3;
+}
+
+.flex-grow-4 {
+  flex-grow: 4;
+}
 
 /** ------------------ */
 
@@ -162,6 +191,7 @@ pre {
   word-wrap: break-word;
   height: auto;
   margin: 0;
+  width: 100%;
 }
 
 .chart-wrapper {

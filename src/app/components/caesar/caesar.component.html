@@ -1,7 +1,7 @@
 <h1>Caesar cipher</h1>
 
 
-<div class="flex mb-2">
+<!-- <div class="flex mb-2">
   <div class="p-1"> Plaintext </div>
   <div class="bold p-1"> {{ plaintextString }} </div>
 </div>
@@ -9,59 +9,102 @@
 <div class="flex mb-2">
   <div class="p-1"> Ciphertext </div>
   <div class="bold p-1"> {{ ciphertextString }} </div>
-</div>
+</div> -->
 
 <mat-divider class="mb-2"></mat-divider>
 
+
+
+<!-- 
+<div class="flex mb-2">
+  <div class="p-2 flex-grow-1">
+
+  </div>
+  <div class="p-2 flex-grow-1">
+
+  </div>
+</div> 
+-->
+
+
+
+<!-- -------------------------------------------- -->
+
+
 <form [formGroup]="form">
-  <mat-grid-list cols="2" rowHeight="4:1">
-    <mat-grid-tile>
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+
+      <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
 
       <mat-form-field class="w100">
         <mat-label>Plaintext</mat-label>
         <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="30"></textarea>
       </mat-form-field>
-      <div class="p-2 ml-2">
-        <button (click)="encrypt()" mat-flat-button>Encrypt</button>
 
+    </div>
+    <div class="p-2 flex-grow-1">
+
+      <div class="box-outlined">
+        <pre>{{encrypted}}</pre>
       </div>
 
-    </mat-grid-tile>
+    </div>
+  </div>
 
-    <mat-grid-tile>
-      <div class="p-2 w100">
-        <mat-card appearance="outlined">
-          <mat-card-content>
-            <pre>{{encrypted}}</pre>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+  <!-- -------------------------------------------- -->
 
-    <mat-grid-tile>
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+      <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+
+
+
       <mat-form-field class="w100">
         <mat-label>ciphertext</mat-label>
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="30"></textarea>
       </mat-form-field>
-      <div class="p-2 ml-2">
-        <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+    </div>
+
+    <div class="p-2 flex-grow-1">
+
+      <div class="box-outlined">
+        <pre>{{decrypted}}</pre>
       </div>
-    </mat-grid-tile>
 
-    <mat-grid-tile>
-      <div class="p-2 w100">
-        <mat-card appearance="outlined">
-          <mat-card-content>
-            <pre>{{decrypted}}</pre>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+    </div>
+  </div>
 
+  <!-- -------------------------------------------- -->
 
-    <mat-grid-tile>
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+
       <mat-label>
         Shift ({{form.get('shift')?.value}}):
       </mat-label>
@@ -69,29 +112,32 @@
       <mat-slider class="w100" [min]="shiftMin" [max]="shiftMax" step="1">
         <input formControlName="shift" matSliderThumb value="-3">
       </mat-slider>
-    </mat-grid-tile>
 
-    <mat-grid-tile>
-      &nbsp;
-    </mat-grid-tile>
+    </div>
 
+  </div>
 
-    <mat-grid-tile>
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+
       <mat-form-field class="w100">
         <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
         <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
-    </mat-grid-tile>
 
-    <mat-grid-tile>
-      &nbsp;
-    </mat-grid-tile>
+    </div>
 
+  </div>
 
-  </mat-grid-list>
+  <!-- -------------------------------------------- -->
 
 </form>
+
+
+
 
 <mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
 <app-execution-log [logs]="logs"></app-execution-log>

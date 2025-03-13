@@ -45,7 +45,6 @@ export class FrequencyAnalysisComponent {
   }
   set encryptedText(newValue: string) {
     this.ciphertext = newValue;
-    // this.setData();
     this.setCiphertext();
   }
 
@@ -69,9 +68,9 @@ export class FrequencyAnalysisComponent {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Letter';
+  //xAxisLabel = 'Letter';
   showYAxisLabel = true;
-  yAxisLabel = 'Frequency';
+  //yAxisLabel = 'Frequency';
 
   colorScheme: any = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -340,4 +339,25 @@ export class FrequencyAnalysisComponent {
     console.log(f);
 
   }
+
+
+  get xAxisLabel(): string {
+    const xAxisLabel = 'Letter';
+    const yAxisLabel = 'Frequency';
+    if (this.hasSecondDataset) {
+      return yAxisLabel;
+    }
+    return xAxisLabel;
+  }
+
+  get yAxisLabel(): string {
+    const xAxisLabel = 'Letter';
+    const yAxisLabel = 'Frequency';
+    if (this.hasSecondDataset) {
+      return xAxisLabel;
+    }
+    return yAxisLabel;
+  }
+
+
 }

@@ -5,8 +5,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
 import {
   FormControl,
   FormGroup,
@@ -28,8 +26,7 @@ import { FrequencyAnalysisComponent } from '../frequency-analysis/frequency-anal
     MatFormFieldModule,
     MatDividerModule,
     MatSliderModule,
-    MatGridListModule,
-    MatCardModule,
+
     ReactiveFormsModule,
     MatButtonModule,
     CommonModule,
@@ -58,9 +55,7 @@ export class CaesarComponent implements OnInit {
 
   private cipher: Caesar = new Caesar();
 
-  constructor() {
-    this.cipher.encrypt();
-  }
+  constructor() { }
 
   /**
    * ngOnInit
@@ -88,7 +83,7 @@ export class CaesarComponent implements OnInit {
       }))
       .subscribe();
 
-
+    this.cipher.encrypt();
   }
 
   /**
