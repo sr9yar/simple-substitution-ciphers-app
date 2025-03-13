@@ -1,4 +1,6 @@
-<h1>Caesar cipher</h1>
+<h1>
+  {{ 'caesar-cipher' | translate }}
+</h1>
 
 
 <!-- <div class="flex mb-2">
@@ -36,7 +38,9 @@
   <div class="flex mb-2">
     <div class="p-2 flex-grow-1">
 
-      <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+      <button (click)="encrypt()" mat-flat-button>
+        {{ 'common.encrypt' | translate }}
+      </button>
 
     </div>
     <div class="p-2 flex-grow-1">
@@ -50,7 +54,9 @@
     <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
-        <mat-label>Plaintext</mat-label>
+        <mat-label>
+          {{ 'common.plaintext' | translate }}
+        </mat-label>
         <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="30"></textarea>
       </mat-form-field>
@@ -69,7 +75,9 @@
 
   <div class="flex mb-2">
     <div class="p-2 flex-grow-1 ">
-      <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+      <button (click)="decrypt()" mat-flat-button>
+        {{ 'common.decrypt' | translate }}
+      </button>
 
     </div>
     <div class="p-2 flex-grow-1">
@@ -85,7 +93,9 @@
 
 
       <mat-form-field class="w100">
-        <mat-label>Ciphertext</mat-label>
+        <mat-label>
+          {{ 'common.ciphertext' | translate }}
+        </mat-label>
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="30"></textarea>
       </mat-form-field>
@@ -106,7 +116,7 @@
     <div class="p-2 flex-grow-1">
 
       <mat-label>
-        Shift ({{form.get('shift')?.value}}):
+        {{ 'common.shift' | translate }} ({{form.get('shift')?.value}}):
       </mat-label>
 
       <mat-slider class="w100" [min]="shiftMin" [max]="shiftMax" step="1">
@@ -123,7 +133,7 @@
     <div class="p-2 flex-grow-1">
 
       <mat-form-field class="w100">
-        <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
+        <mat-label>{{ 'common.alphabet' | translate }} ({{form.get('alphabet')?.value.length}})</mat-label>
         <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
@@ -135,7 +145,6 @@
   <!-- -------------------------------------------- -->
 
 </form>
-
 
 
 

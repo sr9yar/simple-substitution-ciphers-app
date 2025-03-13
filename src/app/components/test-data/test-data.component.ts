@@ -5,13 +5,19 @@ import {
   CAESAR_DECRYPT_TEST,
   FREQUENCY_TEST_WITH_MISMATCH_RUSSIAN,
   FREQUENCY_TEST_RUSSIAN,
-  RANDOM_TEXT
+  RANDOM_TEXT,
 } from '../../constants';
-import { ALPHABET_ENGLISH, ALPHABET_RUSSIAN } from 'simple-substitution-ciphers';
+import {
+  ALPHABET_ENGLISH,
+  ALPHABET_RUSSIAN,
+} from 'simple-substitution-ciphers';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-test-data',
-  imports: [],
+  imports: [
+    TranslateModule,
+  ],
   templateUrl: './test-data.component.html',
   styleUrl: './test-data.component.scss',
   standalone: true,

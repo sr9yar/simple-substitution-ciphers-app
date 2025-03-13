@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { FrequencyAnalysisComponent } from '../frequency-analysis/frequency-analysis.component';
 import { Language } from '../../types/language.type';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -33,6 +34,9 @@ import { Language } from '../../types/language.type';
     CommonModule,
     ExecutionLogComponent,
     FrequencyAnalysisComponent,
+
+    TranslateModule,
+
   ],
   templateUrl: './caesar.component.html',
   styleUrl: './caesar.component.scss',

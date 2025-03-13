@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { take, tap } from 'rxjs';
 import { ALPHABET_FREQUENCY_ENGLISH, ALPHABET_FREQUENCY_RUSSIAN } from 'simple-substitution-ciphers';
 
 type SingleBarItem = {
@@ -24,6 +26,7 @@ type Language = 'en' | 'ru';
   imports: [
     FormsModule,
     NgxChartsModule,
+    TranslateModule,
   ],
   templateUrl: './frequency-analysis.component.html',
   styleUrl: './frequency-analysis.component.scss',
@@ -68,15 +71,25 @@ export class FrequencyAnalysisComponent {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  //xAxisLabel = 'Letter';
+  // xAxisLabel = 'Letter';
   showYAxisLabel = true;
-  //yAxisLabel = 'Frequency';
+  // yAxisLabel = 'Frequency';
 
   colorScheme: any = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   }
 
   title = 'Letter frequency in the English alphabet';
+
+  labelLetter = 'Letter';
+
+  labelFrequency = 'Frequency';
+
+  labelCipherFrequency = 'Cipher frequency';
+
+  labelNaturalFrequency = 'Natural frequency';
+
+  labelLegend = 'Legend';
 
   // ranked map by frequency
   alphabetMapRanked: string[] = [];
@@ -89,7 +102,42 @@ export class FrequencyAnalysisComponent {
 
   decryptionSuggestion: string = '';
 
-  constructor() {
+  constructor(
+    private readonly translate: TranslateService,
+  ) {
+
+    this.translate.get('frequency-analysis.title-en')
+      .pipe(tap((v: string) => this.title = v))
+      .pipe(take(1))
+      .subscribe();
+
+    this.translate.onLangChange.subscribe(() => {
+
+      this.translate.get('frequency-analysis.letter')
+        .pipe(tap((v: string) => this.labelLetter = v))
+        .pipe(take(1))
+        .subscribe();
+      this.translate.get('frequency-analysis.frequency')
+        .pipe(tap((v: string) => this.labelFrequency = v))
+        .pipe(take(1))
+        .subscribe();
+      this.translate.get('frequency-analysis.cipher-frequency')
+        .pipe(tap((v: string) => this.labelCipherFrequency = v))
+        .pipe(tap((v: string) => this.setCiphertext()))
+        .pipe(take(1))
+        .subscribe();
+      this.translate.get('frequency-analysis.natural-frequency')
+        .pipe(tap((v: string) => this.labelNaturalFrequency = v))
+        .pipe(tap((v: string) => this.setCiphertext()))
+        .pipe(take(1))
+        .subscribe();
+      this.translate.get('frequency-analysis.legend')
+        .pipe(tap((v: string) => this.labelLegend = v))
+        .pipe(tap((v: string) => this.setCiphertext()))
+        .pipe(take(1))
+        .subscribe();
+    });
+
     this.setData();
   }
 
@@ -101,17 +149,26 @@ export class FrequencyAnalysisComponent {
       case 'ru':
         this.alphabetMap = ALPHABET_FREQUENCY_RUSSIAN;
         this.alphabetMapUnsorted = ALPHABET_FREQUENCY_RUSSIAN;
-        this.title = 'Letter frequency in the Russian alphabet';
+        this.translate.get('frequency-analysis.title-ru')
+          .pipe(tap((v: string) => this.title = v))
+          .pipe(take(1))
+          .subscribe();
         break;
       case 'en':
         this.alphabetMap = ALPHABET_FREQUENCY_ENGLISH;
         this.alphabetMapUnsorted = ALPHABET_FREQUENCY_ENGLISH;
-        this.title = 'Letter frequency in the English alphabet';
+        this.translate.get('frequency-analysis.title-en')
+          .pipe(tap((v: string) => this.title = v))
+          .pipe(take(1))
+          .subscribe();
         break;
       default:
         this.alphabetMap = ALPHABET_FREQUENCY_ENGLISH;
         this.alphabetMapUnsorted = ALPHABET_FREQUENCY_ENGLISH;
-        this.title = 'Letter frequency in the English alphabet';
+        this.translate.get('frequency-analysis.title-en')
+          .pipe(tap((v: string) => this.title = v))
+          .pipe(take(1))
+          .subscribe();
 
     }
 
@@ -217,15 +274,11 @@ export class FrequencyAnalysisComponent {
           name: `${key} → ${matchedByRank}`,
           series: [
             {
-              // name: `[c]${key} ${value.toFixed(2)}`,
-              // name: `cipher freq ${value.toFixed(2)}`,
-              name: `${'Cipher frequency'}`,
+              name: `${this.labelCipherFrequency}`,
               value: value,
             },
             {
-              // name: `[n]${matchedByRank} ${(this.alphabetMap.get(matchedByRank) ?? 0).toFixed(2)}`,
-              // name: `natural freq ${(this.alphabetMap.get(matchedByRank) ?? 0).toFixed(2)}`,
-              name: `${'Natural frequency'}`,
+              name: `${this.labelNaturalFrequency}`,
               value: this.alphabetMap.get(matchedByRank) ?? 0,
             },
           ],
@@ -342,8 +395,8 @@ export class FrequencyAnalysisComponent {
 
 
   get xAxisLabel(): string {
-    const xAxisLabel = 'Letter';
-    const yAxisLabel = 'Frequency';
+    const xAxisLabel = this.labelLetter;
+    const yAxisLabel = this.labelFrequency;
     if (this.hasSecondDataset) {
       return yAxisLabel;
     }
@@ -351,8 +404,8 @@ export class FrequencyAnalysisComponent {
   }
 
   get yAxisLabel(): string {
-    const xAxisLabel = 'Letter';
-    const yAxisLabel = 'Frequency';
+    const xAxisLabel = this.labelLetter;
+    const yAxisLabel = this.labelFrequency;
     if (this.hasSecondDataset) {
       return xAxisLabel;
     }

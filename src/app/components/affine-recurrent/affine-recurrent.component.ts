@@ -13,6 +13,7 @@ import { FrequencyAnalysisComponent } from "../frequency-analysis/frequency-anal
 import { tap } from 'rxjs';
 import { coprimeValidator } from '../../validators/coprime.validator';
 import { Language } from '../../types/language.type';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -29,7 +30,10 @@ import { Language } from '../../types/language.type';
     MatButtonModule,
     CommonModule,
     ExecutionLogComponent,
-    FrequencyAnalysisComponent
+    FrequencyAnalysisComponent,
+
+    TranslateModule,
+
   ],
   templateUrl: './affine-recurrent.component.html',
   styleUrl: './affine-recurrent.component.scss',

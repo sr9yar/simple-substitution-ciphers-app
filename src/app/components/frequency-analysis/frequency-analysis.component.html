@@ -1,4 +1,6 @@
-<h2>Frequency analysis</h2>
+<h2>
+  {{ 'frequency-analysis' | translate }}
+</h2>
 
 <h3>{{title}}</h3>
 
@@ -20,7 +22,9 @@
 </div>
 
 
-<h3 *ngIf="hasSecondDataset && !!decryptionSuggestion">Decryption suggestion</h3>
+<h3 *ngIf="hasSecondDataset && !!decryptionSuggestion">
+  {{ 'frequency-analysis.decryption-suggestion' | translate }}
+</h3>
 <div *ngIf="hasSecondDataset && !!decryptionSuggestion">
   <pre>{{decryptionSuggestion}}</pre>
 </div>

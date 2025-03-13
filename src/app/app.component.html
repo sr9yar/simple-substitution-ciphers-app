@@ -1,37 +1,46 @@
 <mat-toolbar>
+
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['test-data']">
-      Test Data
+      {{ 'common.test-data' | translate }}
     </button>
     <button mat-menu-item [routerLink]="['caesar']">
-      Caesar
+      {{ 'common.caesar' | translate }}
     </button>
     <button mat-menu-item [routerLink]="['affine']">
-      Affine
+      {{ 'common.affine' | translate }}
     </button>
     <button mat-menu-item [routerLink]="['affine-recurrent']">
-      Affine Recurrent
+      {{ 'common.affine-recurrent' | translate }}
     </button>
   </mat-menu>
 
+  <span>
+    <img (click)="switchLanguage( 'en-GB')" class="flag-icon" src="/assets/flags/en-GB.png" alt="flag" />
+    <img (click)="switchLanguage( 'ru-RU')" class="flag-icon" src="/assets/flags/ru-RU.png" alt="flag" />
+  </span>
 
-  <span>Simple Substitution Ciphers</span>
+  <span>
+    {{ 'common.simple-substitution-ciphers' | translate }}
+  </span>
   <span class="spacer"></span>
+
   <button mat-button [routerLink]="['test-data']">
-    Test Data
+    {{ 'common.test-data' | translate }}
   </button>
   <button mat-button [routerLink]="['caesar']">
-    Caesar
+    {{ 'common.caesar' | translate }}
   </button>
   <button mat-button [routerLink]="['affine']">
-    Affine
+    {{ 'common.affine' | translate }}
   </button>
   <button mat-button [routerLink]="['affine-recurrent']">
-    Affine Recurrent
+    {{ 'common.affine-recurrent' | translate }}
   </button>
+
 </mat-toolbar>
 
 <div class="wrapper">

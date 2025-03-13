@@ -1,4 +1,6 @@
-<h1 i18n>Affine cipher</h1>
+<h1>
+  {{ 'affine-cipher' | translate }}
+</h1>
 
 <!-- 
 <div class="flex">
@@ -36,7 +38,9 @@
   <div class="flex mb-2">
     <div class="p-2 flex-grow-1">
 
-      <button (click)="encrypt()" mat-flat-button>Encrypt</button>
+      <button (click)="encrypt()" mat-flat-button>
+        {{ 'common.encrypt' | translate }}
+      </button>
 
     </div>
     <div class="p-2 flex-grow-1">
@@ -51,7 +55,9 @@
     <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
-        <mat-label>Plaintext</mat-label>
+        <mat-label>
+          {{ 'common.ciphertext' | translate }}
+        </mat-label>
         <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
@@ -71,7 +77,9 @@
 
   <div class="flex mb-2">
     <div class="p-2 flex-grow-1">
-      <button (click)="decrypt()" mat-flat-button>Decrypt</button>
+      <button (click)="decrypt()" mat-flat-button>
+        {{ 'common.decrypt' | translate }}
+      </button>
 
     </div>
     <div class="p-2 flex-grow-1">
@@ -86,7 +94,7 @@
     <div class="p-2 flex-grow-1 min35">
 
       <mat-form-field class="w100">
-        <mat-label>Ciphertext</mat-label>
+        <mat-label>{{ 'common.ciphertext' | translate }}</mat-label>
         <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
@@ -109,7 +117,7 @@
     <div class="p-2 flex-grow-1">
 
       <mat-form-field class="w100">
-        <mat-label>Key α</mat-label>
+        <mat-label>{{ 'common.key' | translate }} α</mat-label>
         <input matInput formControlName="keyA" type="number">
         @if (form.get('keyA')?.hasError('coprime')) {
         <mat-error>{{form.get('keyA')?.errors?.['coprime'].value}}</mat-error>
@@ -120,7 +128,7 @@
     <div class="p-2 flex-grow-1">
 
       <mat-form-field class="w100">
-        <mat-label>Key β</mat-label>
+        <mat-label>{{ 'common.key' | translate }} β</mat-label>
         <input matInput formControlName="keyB" type="number">
       </mat-form-field>
 
@@ -133,7 +141,8 @@
     <div class="p-2 flex-grow-1">
 
       <mat-form-field class="w100">
-        <mat-label>Alphabet ({{form.get('alphabet')?.value.length}})</mat-label>
+        <mat-label>{{ 'common.alphabet' | translate }}
+          ({{form.get('alphabet')?.value.length}})</mat-label>
         <textarea formControlName="alphabet" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
