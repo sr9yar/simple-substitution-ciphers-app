@@ -12,7 +12,7 @@
   "affine-cipher": "Аффинный Шифр",
   "common.shift": "Сдвиг",
   "common.encrypt": "Зашифровать",
-  "common.plaintext": "Простой текст",
+  "common.plaintext": "Открытый текст",
   "common.decrypt": "Расшифровать",
   "common.ciphertext": "Шифртекст",
   "common.key": "Ключ",
