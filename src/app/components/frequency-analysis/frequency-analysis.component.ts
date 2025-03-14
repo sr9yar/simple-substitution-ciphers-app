@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -32,7 +32,7 @@ type Language = 'en' | 'ru';
   styleUrl: './frequency-analysis.component.scss',
   standalone: true,
 })
-export class FrequencyAnalysisComponent {
+export class FrequencyAnalysisComponent implements OnInit {
 
   language: Language = 'ru';
   // key - ciphertext frequency
@@ -106,39 +106,58 @@ export class FrequencyAnalysisComponent {
     private readonly translate: TranslateService,
   ) {
 
-    this.translate.get('frequency-analysis.title-en')
-      .pipe(tap((v: string) => this.title = v))
-      .pipe(take(1))
-      .subscribe();
-
     this.translate.onLangChange.subscribe(() => {
-
-      this.translate.get('frequency-analysis.letter')
-        .pipe(tap((v: string) => this.labelLetter = v))
-        .pipe(take(1))
-        .subscribe();
-      this.translate.get('frequency-analysis.frequency')
-        .pipe(tap((v: string) => this.labelFrequency = v))
-        .pipe(take(1))
-        .subscribe();
-      this.translate.get('frequency-analysis.cipher-frequency')
-        .pipe(tap((v: string) => this.labelCipherFrequency = v))
-        .pipe(tap((v: string) => this.setCiphertext()))
-        .pipe(take(1))
-        .subscribe();
-      this.translate.get('frequency-analysis.natural-frequency')
-        .pipe(tap((v: string) => this.labelNaturalFrequency = v))
-        .pipe(tap((v: string) => this.setCiphertext()))
-        .pipe(take(1))
-        .subscribe();
-      this.translate.get('frequency-analysis.legend')
-        .pipe(tap((v: string) => this.labelLegend = v))
-        .pipe(tap((v: string) => this.setCiphertext()))
-        .pipe(take(1))
-        .subscribe();
+      this.updateTranslations();
     });
 
     this.setData();
+  }
+
+  /**
+   * 
+   */
+  ngOnInit(): void {
+    this.updateTranslations();
+  }
+
+  /**
+   * 
+   */
+  updateTranslations() {
+    let translationSlug = 'frequency-analysis.title-en';
+    if (this.alphabetLanguage === 'ru') {
+      translationSlug = 'frequency-analysis.title-ru';
+    }
+    if (this.hasSecondDataset) {
+      translationSlug = 'frequency-analysis.title-comparison';
+    }
+    this.translate.get(translationSlug)
+      .pipe(tap((v: string) => this.title = v))
+      .pipe(take(1))
+      .subscribe();
+    this.translate.get('frequency-analysis.letter')
+      .pipe(tap((v: string) => this.labelLetter = v))
+      .pipe(take(1))
+      .subscribe();
+    this.translate.get('frequency-analysis.frequency')
+      .pipe(tap((v: string) => this.labelFrequency = v))
+      .pipe(take(1))
+      .subscribe();
+    this.translate.get('frequency-analysis.cipher-frequency')
+      .pipe(tap((v: string) => this.labelCipherFrequency = v))
+      .pipe(tap((v: string) => this.setCiphertext()))
+      .pipe(take(1))
+      .subscribe();
+    this.translate.get('frequency-analysis.natural-frequency')
+      .pipe(tap((v: string) => this.labelNaturalFrequency = v))
+      .pipe(tap((v: string) => this.setCiphertext()))
+      .pipe(take(1))
+      .subscribe();
+    this.translate.get('frequency-analysis.legend')
+      .pipe(tap((v: string) => this.labelLegend = v))
+      .pipe(tap((v: string) => this.setCiphertext()))
+      .pipe(take(1))
+      .subscribe();
   }
 
   /**

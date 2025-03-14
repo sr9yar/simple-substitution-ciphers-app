@@ -24,6 +24,7 @@
   "frequency-analysis.decryption-suggestion": "Предполагаемый вариант расшифрования",
   "frequency-analysis.title-en": "Частотность букв в английском алфавите",
   "frequency-analysis.title-ru": "Частотность букв в русском алфавите",
+  "frequency-analysis.title-comparison": "Сравнение частотностей букв",
   "frequency-analysis.cipher-frequency": "Частотность шифртекста",
   "frequency-analysis.natural-frequency": "Естественная частотность",
   "frequency-analysis.letter": "Буква",

@@ -24,6 +24,7 @@
   "frequency-analysis.decryption-suggestion": "Decryption suggestion",
   "frequency-analysis.title-en": "Letter frequency in the English alphabet",
   "frequency-analysis.title-ru": "Letter frequency in the Russian alphabet",
+  "frequency-analysis.title-comparison": "Letter frequency comparison",
   "frequency-analysis.cipher-frequency": "Cipher frequency",
   "frequency-analysis.natural-frequency": "Natural frequency",
   "frequency-analysis.letter": "Letter",

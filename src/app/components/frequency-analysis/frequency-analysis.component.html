@@ -5,7 +5,7 @@
 <h3>{{title}}</h3>
 
 <div *ngIf="hasSecondDataset" #containerRef class="chart-wrapper">
-  <ngx-charts-bar-horizontal-2d [groupPadding]="4" [barPadding]="2"
+  <ngx-charts-bar-horizontal-2d [legendTitle]="labelLegend" [groupPadding]="4" [barPadding]="2"
     [view]="[containerRef.offsetWidth, containerRef.offsetWidth*0.6]" [scheme]="colorScheme" [results]="results"
     [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
     [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
@@ -14,9 +14,10 @@
 </div>
 
 <div *ngIf="!hasSecondDataset" #containerRef class="chart-wrapper">
-  <ngx-charts-bar-vertical [barPadding]="8" [view]="[containerRef.offsetWidth, containerRef.offsetWidth*0.4]"
-    [scheme]="colorScheme" [results]="results" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
-    [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+  <ngx-charts-bar-vertical [legendTitle]="labelLegend" [barPadding]="8"
+    [view]="[containerRef.offsetWidth, containerRef.offsetWidth*0.4]" [scheme]="colorScheme" [results]="results"
+    [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel">
   </ngx-charts-bar-vertical>
 </div>
