@@ -2,10 +2,11 @@
   <h2 *ngIf="hasLogs">
     {{ 'execution-log' | translate }}
   </h2>
-
-  <div *ngFor="let log of logs">
+  <div>
     <pre>
-    {{log}}
-  </pre>
+      @for (item of logs; track item) {
+        {{item}}
+      }
+    </pre>
   </div>
 </div>
