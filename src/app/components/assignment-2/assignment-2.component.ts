@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-assignment-2',
   imports: [
     TranslateModule,
-
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './assignment-2.component.html',
+  styleUrl: './assignment-2.component.scss',
   standalone: true,
 })
-export class HomeComponent {
+export class Assignment2Component {
 
 }
