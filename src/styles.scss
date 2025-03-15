@@ -327,3 +327,10 @@ pre {
   overflow: hidden;
   flex: 1 1 auto;
 }
+
+
+.text-overflow-wrap {
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+}
