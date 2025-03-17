@@ -1,6 +1,6 @@
 {
   "name": "simple-substitution-ciphers-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -24,7 +24,7 @@
     "@ngx-translate/http-loader": "^16.0.1",
     "@swimlane/ngx-charts": "^22.0.0-alpha.0",
     "rxjs": "~7.8.0",
-    "simple-substitution-ciphers": "^0.1.12",
+    "simple-substitution-ciphers": "^0.1.13",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
