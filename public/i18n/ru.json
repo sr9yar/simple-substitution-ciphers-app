@@ -39,5 +39,6 @@
   "test-data.freq-map-en": "Сгенерированная частотность (Английский)",
   "test-data.freq-map-ru": "Сгенерированная частотность (Русский)",
   "test-data.russian-alphabet": "Русский алфавит",
-  "test-data.english-alphabet": "Английский алфавит"
+  "test-data.english-alphabet": "Английский алфавит",
+  "common.symmetric-ciphers": "Симметричные шифры"
 }

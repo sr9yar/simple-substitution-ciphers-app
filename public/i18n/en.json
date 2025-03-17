@@ -39,5 +39,6 @@
   "test-data.freq-map-en": "Generated frequency map (English)",
   "test-data.freq-map-ru": "Generated frequency map (Russian)",
   "test-data.russian-alphabet": "Russian alphabet",
-  "test-data.english-alphabet": "English alphabet"
+  "test-data.english-alphabet": "English alphabet",
+  "common.symmetric-ciphers": "Symmetric ciphers"
 }
