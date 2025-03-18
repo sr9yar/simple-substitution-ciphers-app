@@ -28,25 +28,17 @@
   </span>
   <span class="spacer"></span>
 
-  <button mat-button [routerLink]="['test-data']">
-    <span class="text-overflow-wrap">
-      {{ 'common.test-data' | translate }}
-    </span>
+  <button mat-button class="button-ellipsis" [routerLink]="['test-data']">
+    {{ 'common.test-data' | translate }}
   </button>
-  <button mat-button [routerLink]="['caesar']">
-    <span class="text-overflow-wrap">
-      {{ 'common.caesar' | translate }}
-    </span>
+  <button class="button-ellipsis" mat-button [routerLink]="['caesar']">
+    {{ 'common.caesar' | translate }}
   </button>
-  <button mat-button [routerLink]="['affine']">
-    <span class="text-overflow-wrap">
-      {{ 'common.affine' | translate }}
-    </span>
+  <button class="button-ellipsis" mat-button [routerLink]="['affine']">
+    {{ 'common.affine' | translate }}
   </button>
-  <button mat-button [routerLink]="['affine-recurrent']">
-    <span class="text-overflow-wrap">
-      {{ 'common.affine-recurrent' | translate }}
-    </span>
+  <button class="button-ellipsis" mat-button [routerLink]="['affine-recurrent']">
+    {{ 'common.affine-recurrent' | translate }}
   </button>
 
 </mat-toolbar>
