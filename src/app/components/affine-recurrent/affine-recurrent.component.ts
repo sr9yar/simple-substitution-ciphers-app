@@ -87,12 +87,13 @@ export class AffineRecurrentComponent {
 
     this.form.get('keyA1')?.valueChanges
       .pipe(tap((newValue) => {
-        this.cipher.a1 = newValue;
+        // this.cipher.a1 = newValue;
       }))
       .subscribe({
         next: (newValue: number) => {
 
           if (areCoprime(newValue, this.mod()) && areCoprime(this.form.get('keyA2')?.value, this.mod())) {
+            this.cipher.a1 = newValue;
             this.encrypt();
             this.decrypt();
           }
@@ -105,7 +106,6 @@ export class AffineRecurrentComponent {
       }))
       .subscribe({
         next: (newValue: number) => {
-
           this.encrypt();
           this.decrypt();
         }
@@ -113,12 +113,13 @@ export class AffineRecurrentComponent {
 
     this.form.get('keyA2')?.valueChanges
       .pipe(tap((newValue) => {
-        this.cipher.a2 = newValue;
+        // this.cipher.a2 = newValue;
       }))
       .subscribe({
         next: (newValue: number) => {
 
           if (areCoprime(newValue, this.mod()) && areCoprime(this.form.get('keyA1')?.value, this.mod())) {
+            this.cipher.a2 = newValue;
             this.encrypt();
             this.decrypt();
           }

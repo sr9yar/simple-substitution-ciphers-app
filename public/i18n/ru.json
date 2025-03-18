@@ -40,5 +40,6 @@
   "test-data.freq-map-ru": "Сгенерированная частотность (Русский)",
   "test-data.russian-alphabet": "Русский алфавит",
   "test-data.english-alphabet": "Английский алфавит",
-  "common.symmetric-ciphers": "Симметричные шифры"
+  "common.symmetric-ciphers": "Симметричные шифры",
+  "common.public-key-cryptography": "Криптография с открытым ключом"
 }
