@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -39,7 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './affine-recurrent.component.scss',
   standalone: true,
 })
-export class AffineRecurrentComponent {
+export class AffineRecurrentComponent implements OnInit {
   private cipher: AffineRecurrent = new AffineRecurrent();
 
   encrypted: string = '[encrypted]';

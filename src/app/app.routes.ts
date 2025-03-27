@@ -7,8 +7,25 @@ import { TestDataComponent } from './components/test-data/test-data.component';
 import { Assignment1Component } from './components/assignment-1/assignment-1.component';
 import { Assignment2Component } from './components/assignment-2/assignment-2.component';
 import { Assignment3Component } from './components/assignment-3/assignment-3.component';
+import { RsaComponent } from './components/rsa/rsa.component';
+import { RabinComponent } from './components/rabin/rabin.component';
+import { ElgamalComponent } from './components/elgamal/elgamal.component';
 
 export const routes: Routes = [
+
+  {
+    path: 'rsa',
+    component: RsaComponent,
+  },
+  {
+    path: 'rabin',
+    component: RabinComponent,
+  },
+  {
+    path: 'elgamal',
+    component: ElgamalComponent,
+  },
+
   {
     path: 'caesar',
     component: CaesarComponent,
@@ -29,11 +46,7 @@ export const routes: Routes = [
   //   path: '',
   //   component: HomeComponent,
   // },
-  {
-    path: '',
-    redirectTo: '/assignment-1',
-    pathMatch: 'full',
-  },
+
   {
     path: 'assignment-1',
     component: Assignment1Component,
@@ -45,6 +58,12 @@ export const routes: Routes = [
   {
     path: 'assignment-3',
     component: Assignment3Component,
+  },
+
+  {
+    path: '',
+    redirectTo: '/assignment-1',
+    pathMatch: 'full',
   },
   {
     path: '**',

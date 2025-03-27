@@ -4,7 +4,7 @@
   </h2>
   <div>
     <pre>
-      @for (item of logs; track item) {
+      @for (item of logs; track $index) {
         {{item}}
       }
     </pre>

@@ -16,7 +16,23 @@
     <button mat-menu-item [routerLink]="['affine-recurrent']">
       {{ 'common.affine-recurrent' | translate }}
     </button>
+    <button mat-menu-item [matMenuTriggerFor]="pkc" routerLink="/assignment-2">
+      {{ 'pkc.pkc' | translate }}
+    </button>
   </mat-menu>
+
+  <mat-menu #pkc="matMenu">
+    <button mat-menu-item routerLink="/rsa">
+      {{ 'pkc.rsa' | translate }}
+    </button>
+    <button mat-menu-item routerLink="/rabin">
+      {{ 'pkc.rabin' | translate }}
+    </button>
+    <button mat-menu-item routerLink="/elgamal">
+      {{ 'pkc.elgamal' | translate}}
+    </button>
+  </mat-menu>
+
 
   <span>
     <img (click)="switchLanguage('en-GB')" class="flag-icon" src="/assets/flags/en-GB.png" alt="flag" />

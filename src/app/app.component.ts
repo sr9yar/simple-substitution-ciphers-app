@@ -37,6 +37,10 @@ export class AppComponent {
 
   title = 'Simple Substitution Ciphers App';
 
+  /**
+   * Switch language
+   * @param code 
+   */
   switchLanguage(code: string): void {
     // 'ru-RU'
     this.translate.use(code.toLowerCase().slice(0, 2));

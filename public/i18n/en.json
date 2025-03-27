@@ -41,5 +41,10 @@
   "test-data.russian-alphabet": "Russian alphabet",
   "test-data.english-alphabet": "English alphabet",
   "common.symmetric-ciphers": "Symmetric ciphers",
-  "common.public-key-cryptography": "Public Key Cryptography"
+  "common.public-key-cryptography": "Public Key Cryptography",
+  "pkc.pkc": "Public Key Cryptography",
+  "pkc.rsa": "RSA",
+  "pkc.rabin": "Rabin",
+  "pkc.elgamal": "ElGamal",
+  "pkc.cryptosystem": "Cryptosystem"
 }

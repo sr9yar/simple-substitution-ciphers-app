@@ -1,0 +1,18 @@
+<h1>
+  {{ 'pkc.rsa' | translate }}
+</h1>
+
+
+<!-- <div class="flex">
+  <div class="p-1"> Plaintext </div>
+  <div class="bold p-1"> {{ plaintextString }} </div>
+</div>
+
+<div class="flex">
+  <div class="p-1"> Ciphertext </div>
+  <div class="bold p-1"> {{ ciphertextString }} </div>
+</div> -->
+
+
+<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
+<app-execution-log [logs]="logs"></app-execution-log>
