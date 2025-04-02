@@ -46,5 +46,13 @@
   "pkc.rsa": "RSA",
   "pkc.rabin": "Rabin",
   "pkc.elgamal": "ElGamal",
-  "pkc.cryptosystem": "Cryptosystem"
+  "pkc.cryptosystem": "Cryptosystem",
+  "common.number": "Number",
+  "common.private-key": "Private key",
+  "common.public-key": "Public key",
+  "common.blocksize": "Block size",
+  "encodings.encodings": "Encodings",
+  "encodings.string": "String",
+  "encodings.string-to-base64": "String to base64",
+  "encodings.base64-to-string": "Base64 to string"
 }

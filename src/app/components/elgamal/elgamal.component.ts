@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -41,6 +40,9 @@ export class ElgamalComponent implements OnInit {
 
   cryptosystem: any = new ElGamal();
 
+  form: FormGroup = new FormGroup({
+  });
+
   constructor() {
     this.cryptosystem.encrypt();
   }
@@ -48,6 +50,20 @@ export class ElgamalComponent implements OnInit {
    * ngOnInit
    */
   ngOnInit(): void {
+  }
+
+  /**
+   * Run encryption
+   */
+  encrypt() {
+    this.cryptosystem.encrypt();
+  }
+
+  /**
+   * Run decryption
+   */
+  decrypt() {
+    this.cryptosystem.decrypt();
   }
 
   /**

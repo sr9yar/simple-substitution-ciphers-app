@@ -14,5 +14,49 @@
 </div> -->
 
 
+<mat-divider class="mb-2"></mat-divider>
+<!-- -------------------------------------------- -->
+
+
+<form [formGroup]="form">
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+      <button (click)="encrypt()" mat-flat-button>
+        {{ 'common.encrypt' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+      <button (click)="decrypt()" mat-flat-button>
+        {{ 'common.decrypt' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+</form>
+
+
+
+<!-- -------------------------------------------- -->
+
+
+
 <mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
 <app-execution-log [logs]="logs"></app-execution-log>

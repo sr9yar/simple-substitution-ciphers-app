@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'encodings.string' | translate }}</mat-label>
+        <textarea #autosize="cdkTextareaAutosize" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5" formControlName="input"></textarea>
+      </mat-form-field>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+      <div class="box-outlined">
+        <pre>{{output}}</pre>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+</form>

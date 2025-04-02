@@ -46,5 +46,13 @@
   "pkc.rsa": "Схема RSA",
   "pkc.rabin": "Схема Рабина",
   "pkc.elgamal": "Схема Эль-Гамаля",
-  "pkc.cryptosystem": "Криптосистема"
+  "pkc.cryptosystem": "Криптосистема",
+  "common.number": "Число",
+  "common.private-key": "Приватный ключ",
+  "common.public-key": "Публичный ключ",
+  "common.blocksize": "Размер блока",
+  "encodings.encodings": "Кодировки",
+  "encodings.string": "Строка",
+  "encodings.string-to-base64": "Строка в base64",
+  "encodings.base64-to-string": "Base64 в строку"
 }

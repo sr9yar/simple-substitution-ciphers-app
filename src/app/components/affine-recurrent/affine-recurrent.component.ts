@@ -28,6 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
     ReactiveFormsModule,
     MatButtonModule,
+
     CommonModule,
     ExecutionLogComponent,
     FrequencyAnalysisComponent,

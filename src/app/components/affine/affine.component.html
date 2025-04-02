@@ -58,7 +58,7 @@
         <mat-label>
           {{ 'common.ciphertext' | translate }}
         </mat-label>
-        <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        <textarea #autosize="cdkTextareaAutosize" formControlName="plaintext" matInput cdkTextareaAutosize
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
 

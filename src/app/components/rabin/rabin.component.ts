@@ -38,6 +38,9 @@ export class RabinComponent implements OnInit {
 
   cryptosystem: any = new Rabin();
 
+  form: FormGroup = new FormGroup({
+  });
+
   constructor() {
     this.cryptosystem.encrypt();
   }
@@ -45,6 +48,22 @@ export class RabinComponent implements OnInit {
    * ngOnInit
    */
   ngOnInit(): void {
+  }
+
+
+
+  /**
+   * Run encryption
+   */
+  encrypt() {
+    this.cryptosystem.encrypt();
+  }
+
+  /**
+   * Run decryption
+   */
+  decrypt() {
+    this.cryptosystem.decrypt();
   }
 
 

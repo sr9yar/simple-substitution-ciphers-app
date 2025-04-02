@@ -10,6 +10,7 @@ import { Assignment3Component } from './components/assignment-3/assignment-3.com
 import { RsaComponent } from './components/rsa/rsa.component';
 import { RabinComponent } from './components/rabin/rabin.component';
 import { ElgamalComponent } from './components/elgamal/elgamal.component';
+import { EncodingsComponent } from './components/encodings/encodings/encodings.component';
 
 export const routes: Routes = [
 
@@ -58,6 +59,11 @@ export const routes: Routes = [
   {
     path: 'assignment-3',
     component: Assignment3Component,
+  },
+
+  {
+    path: 'encodings',
+    component: EncodingsComponent,
   },
 
   {
