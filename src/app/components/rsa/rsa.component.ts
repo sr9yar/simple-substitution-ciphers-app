@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateModule
+} from '@ngx-translate/core';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,8 +12,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { CommonModule } from '@angular/common';
-import { RSA } from '@sr9yar/public-key-cryptography';
+import { isPrime, RSA } from '@sr9yar/public-key-cryptography';
 import { primeValidator } from '../../validators/prime.validator';
+import { coprimeValidator } from '../../validators/coprime.validator';
 
 
 
@@ -61,10 +64,12 @@ export class RsaComponent implements OnInit {
 
     // Public key (n = pq)
     'n': new FormControl(7739, [
-      //coprimeValidator(this.mod.bind(this)),
+      // coprimeValidator(this.mod.bind(this)),
     ]),
     // Public key
-    'e': new FormControl(13),
+    'e': new FormControl(13, [
+      coprimeValidator(this.eulerPhiFunction.bind(this), this.getCoprimeValidatorErroMessage.bind(this)),
+    ]),
     // Private key
     'd': new FormControl(6397),
   });
@@ -93,14 +98,22 @@ export class RsaComponent implements OnInit {
     });
 
     this.form.get('p')?.valueChanges.subscribe({
-      next: (newValue: string) => {
-        this.cryptosystem.p = newValue;
+      next: (newValue: number) => {
+        if (isPrime(newValue)) {
+          this.cryptosystem.p = newValue;
+          this.cryptosystem.generateKeys();
+          this.updateKeys();
+        }
       }
     });
 
     this.form.get('q')?.valueChanges.subscribe({
-      next: (newValue: string) => {
-        this.cryptosystem.q = newValue;
+      next: (newValue: number) => {
+        if (isPrime(newValue)) {
+          this.cryptosystem.q = newValue;
+          this.cryptosystem.generateKeys();
+          this.updateKeys();
+        }
       }
     });
 
@@ -139,6 +152,15 @@ export class RsaComponent implements OnInit {
   }
 
   /**
+   * Update keys
+   */
+  updateKeys() {
+    this.form.get('n')?.setValue(this.cryptosystem.n);
+    this.form.get('e')?.setValue(this.cryptosystem.e);
+    this.form.get('d')?.setValue(this.cryptosystem.d);
+  }
+
+  /**
    * Plaintext string
    */
   get plaintext(): string {
@@ -172,5 +194,23 @@ export class RsaComponent implements OnInit {
    */
   get blocksize(): string {
     return this.cryptosystem.blocksize;
+  }
+
+  /**
+   * Result of the Euler totient function calculation
+   * @returns 
+   */
+  eulerPhiFunction() {
+    return this.cryptosystem.eulerPhiFunction;
+  }
+
+  /**
+   * Function to return custom message
+   * @param n1 
+   * @param n2 
+   * @returns 
+   */
+  getCoprimeValidatorErroMessage(n1: number = 0, n2: number = 0) {
+    return `φ(n) = ${this.cryptosystem.eulerPhiFunction}. Numbers ${n1} and ${n2} must be coprime.`
   }
 }
