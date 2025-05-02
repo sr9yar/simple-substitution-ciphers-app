@@ -50,6 +50,8 @@
   "common.number": "Число",
   "common.private-key": "Приватный ключ",
   "common.public-key": "Публичный ключ",
+  "common.session-key": "Сеансовый ключ",
+  "common.prime-number": "Простое число",
   "common.blocksize": "Размер блока",
   "encodings.encodings": "Кодировки",
   "encodings.string": "Строка",

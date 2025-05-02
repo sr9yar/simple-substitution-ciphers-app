@@ -22,14 +22,126 @@
 
   <!-- -------------------------------------------- -->
 
+
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 col">
       <button (click)="encrypt()" mat-flat-button>
         {{ 'common.encrypt' | translate }}
       </button>
 
     </div>
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 col">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 min35 col">
+
+      <mat-form-field class="w100">
+        <mat-label>
+          {{ 'common.plaintext' | translate }}
+        </mat-label>
+        <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+
+      <div class="box-outlined">
+        <pre>{{encrypted}}</pre>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+      <button (click)="decrypt()" mat-flat-button>
+        {{ 'common.decrypt' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 min35 col">
+
+      <mat-form-field class="w100">
+        <mat-label>
+          {{ 'common.ciphertext' | translate }}
+        </mat-label>
+        <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+      <div class="box-outlined">
+        <pre>{{decrypted}}</pre>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} p ({{ 'common.prime-number' | translate }})</mat-label>
+        <input matInput formControlName="p" type="number">
+        @if (form.get('p')?.hasError('prime')) {
+        <mat-error>{{form.get('p')?.errors?.['prime'].value}}</mat-error>
+        }
+      </mat-form-field>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+      <div class="w100">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} g</mat-label>
+        <input matInput formControlName="g" type="number">
+      </mat-form-field>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} k ({{ 'common.session-key' | translate }})</mat-label>
+        <input matInput formControlName="k" type="number">
+      </mat-form-field>
 
     </div>
   </div>
@@ -37,18 +149,43 @@
   <!-- -------------------------------------------- -->
 
   <div class="flex mb-2">
-    <div class="p-2 flex-grow-1">
-      <button (click)="decrypt()" mat-flat-button>
-        {{ 'common.decrypt' | translate }}
-      </button>
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} x ({{ 'common.private-key' | translate }})</mat-label>
+        <input matInput formControlName="x" type="number">
+      </mat-form-field>
 
     </div>
-    <div class="p-2 flex-grow-1">
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} h ({{ 'common.public-key' | translate }})</mat-label>
+        <input matInput formControlName="h" type="number">
+      </mat-form-field>
 
     </div>
   </div>
 
   <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+      <div class="box-outlined">
+        <pre> {{ 'common.blocksize' | translate }}: {{blocksize}}</pre>
+      </div>
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+      <div class="w100">
+        &nbsp;
+      </div>
+    </div>
+
+  </div>
+
+  <!-- -------------------------------------------- -->
+
 
 </form>
 

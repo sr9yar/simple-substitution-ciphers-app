@@ -50,6 +50,8 @@
   "common.number": "Number",
   "common.private-key": "Private key",
   "common.public-key": "Public key",
+  "common.session-key": "Session key",
+  "common.prime-number": "Prime number",
   "common.blocksize": "Block size",
   "encodings.encodings": "Encodings",
   "encodings.string": "String",

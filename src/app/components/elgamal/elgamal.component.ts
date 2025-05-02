@@ -11,7 +11,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { CommonModule } from '@angular/common';
 
-import { ElGamal } from '@sr9yar/public-key-cryptography';
+import { ElGamal, isPrime } from '@sr9yar/public-key-cryptography';
+import { primeValidator } from '../../validators/prime.validator';
 
 
 
@@ -40,7 +41,35 @@ export class ElgamalComponent implements OnInit {
 
   cryptosystem: any = new ElGamal();
 
+  encrypted: string = '[encrypted]';
+
+  decrypted: string = '[decrypted]';
+
   form: FormGroup = new FormGroup({
+
+    'plaintext': new FormControl(),
+    'ciphertext': new FormControl(),
+    // Prime
+    'p': new FormControl(211, [
+      primeValidator(),
+    ]),
+
+    // g ∈ F*ₚ
+    'g': new FormControl(3, [
+    ]),
+    // Session key
+    'k': new FormControl(7, [
+    ]),
+
+    // Private key. 1 < x < p - 1
+    'x': new FormControl(35, [
+    ]),
+    // Public key. h = g ^ x (mod p)
+    'h': new FormControl(197, [
+    ]),
+
+
+
   });
 
   constructor() {
@@ -50,20 +79,72 @@ export class ElgamalComponent implements OnInit {
    * ngOnInit
    */
   ngOnInit(): void {
+
+    this.form.get('plaintext')?.setValue(this.cryptosystem.plaintext);
+    this.form.get('ciphertext')?.setValue(this.cryptosystem.ciphertext);
+
+    this.form.get('p')?.setValue(this.cryptosystem.p);
+    this.form.get('g')?.setValue(this.cryptosystem.g);
+    this.form.get('k')?.setValue(this.cryptosystem.k);
+    this.form.get('x')?.setValue(this.cryptosystem.x);
+    this.form.get('h')?.setValue(this.cryptosystem.h);
+
+    this.form.get('plaintext')?.valueChanges.subscribe({
+      next: (newValue: string) => {
+        this.cryptosystem.plaintext = newValue;
+      }
+    });
+
+    this.form.get('ciphertext')?.valueChanges.subscribe({
+      next: (newValue: string) => {
+        this.cryptosystem.ciphertext = newValue;
+      }
+    });
+
+    this.form.get('p')?.valueChanges.subscribe({
+      next: (newValue: number) => {
+        if (isPrime(newValue)) {
+          this.cryptosystem.p = newValue;
+          this.cryptosystem.generateG();
+          this.cryptosystem.generateKeys();
+          this.updateKeys();
+        }
+      }
+    });
+
   }
 
   /**
    * Run encryption
    */
   encrypt() {
-    this.cryptosystem.encrypt();
+    this.encrypted = this.cryptosystem.encrypt();
   }
 
   /**
    * Run decryption
    */
   decrypt() {
-    this.cryptosystem.decrypt();
+    this.decrypted = this.cryptosystem.decrypt();
+  }
+
+  /**
+   * Update keys
+   */
+  updateKeys() {
+    this.form.get('g')?.setValue(this.cryptosystem.g);
+    this.form.get('k')?.setValue(this.cryptosystem.k);
+
+    this.form.get('x')?.setValue(this.cryptosystem.x);
+    this.form.get('h')?.setValue(this.cryptosystem.h);
+
+  }
+
+  /**
+   * blocksize
+   */
+  get blocksize(): string {
+    return this.cryptosystem.blocksize;
   }
 
   /**

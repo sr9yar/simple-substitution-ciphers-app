@@ -13,6 +13,7 @@ import { ElgamalComponent } from './components/elgamal/elgamal.component';
 import { EncodingsComponent } from './components/encodings/encodings/encodings.component';
 
 export const routes: Routes = [
+  // -----------------------
 
   {
     path: 'rsa',
@@ -26,7 +27,7 @@ export const routes: Routes = [
     path: 'elgamal',
     component: ElgamalComponent,
   },
-
+  // -----------------------
   {
     path: 'caesar',
     component: CaesarComponent,
@@ -43,6 +44,8 @@ export const routes: Routes = [
     path: 'test-data',
     component: TestDataComponent,
   },
+  // -----------------------
+
   // {
   //   path: '',
   //   component: HomeComponent,
@@ -68,7 +71,7 @@ export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/assignment-1',
+    redirectTo: '/assignment-2',
     pathMatch: 'full',
   },
   {

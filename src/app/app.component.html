@@ -5,6 +5,19 @@
   </button>
 
   <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="ssc" routerLink="/assignment-1">
+      {{ 'common.simple-substitution-ciphers' | translate }}
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="pkc" routerLink="/assignment-2">
+      {{ 'pkc.pkc' | translate }}
+    </button>
+    <button mat-menu-item [routerLink]="['encodings']">
+      {{ 'encodings.encodings' | translate }}
+    </button>
+  </mat-menu>
+
+
+  <mat-menu #ssc="matMenu">
     <button mat-menu-item [routerLink]="['test-data']">
       {{ 'common.test-data' | translate }}
     </button>
@@ -16,12 +29,6 @@
     </button>
     <button mat-menu-item [routerLink]="['affine-recurrent']">
       {{ 'common.affine-recurrent' | translate }}
-    </button>
-    <button mat-menu-item [matMenuTriggerFor]="pkc" routerLink="/assignment-2">
-      {{ 'pkc.pkc' | translate }}
-    </button>
-    <button mat-menu-item [routerLink]="['encodings']">
-      {{ 'encodings.encodings' | translate }}
     </button>
   </mat-menu>
 
