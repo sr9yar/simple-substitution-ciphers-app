@@ -81,13 +81,12 @@ export class ElgamalComponent implements OnInit {
 
   constructor() {
     this.cryptosystem.plaintext = 'crypto';
-
     this.cryptosystem.p = 13499;
     this.cryptosystem.g = 13496;
     this.cryptosystem.x = 5049;
     this.cryptosystem.k = 1616;
     this.cryptosystem.h = 5581;
-
+    this.cryptosystem.generateG();
     this.cryptosystem.encrypt(1616);
   }
 
