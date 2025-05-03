@@ -59,6 +59,7 @@
   "common.probability": "Вероятность",
   "common.test": "Проверить",
   "common.number-of-iterations": "Число итераций",
+  "common.generate-keys": "Генерировать ключи",
   "encodings.encodings": "Кодировки",
   "encodings.string": "Строка",
   "encodings.string-to-base64": "Строка в base64",

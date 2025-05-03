@@ -58,6 +58,7 @@
   "common.number-is-not-prime": "Number is not prime",
   "common.probability": "Probability",
   "common.test": "Test",
+  "common.generate-keys": "Generate keys",
   "common.number-of-iterations": "Number of iterations",
   "encodings.encodings": "Encodings",
   "encodings.string": "String",

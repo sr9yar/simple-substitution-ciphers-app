@@ -11,9 +11,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { CommonModule } from '@angular/common';
 
-import { ElGamal, isPrime } from '@sr9yar/public-key-cryptography';
+import {
+  ElGamal,
+  isPrime,
+  findOrderInGroup,
+} from '@sr9yar/public-key-cryptography';
 import { primeValidator } from '../../validators/prime.validator';
-import { factorValidator } from '../../validators/factor.validator';
 
 
 
@@ -40,34 +43,36 @@ import { factorValidator } from '../../validators/factor.validator';
 })
 export class ElgamalComponent implements OnInit {
 
-  cryptosystem: any = new ElGamal();
+  cryptosystem: any = new ElGamal(13499);
 
   encrypted: string = '[encrypted]';
 
   decrypted: string = '[decrypted]';
 
+  gHint: string = '';
+
   form: FormGroup = new FormGroup({
 
-    'plaintext': new FormControl(),
+    'plaintext': new FormControl('crypto'),
     'ciphertext': new FormControl(),
     // Prime
-    'p': new FormControl(211, [
+    'p': new FormControl(134999, [
       primeValidator(),
     ]),
 
     // g ∈ F*ₚ
-    'g': new FormControl(3, [
-      factorValidator(this.getP.bind(this)),
+    'g': new FormControl(13496, [
+      // factorValidator(this.getP.bind(this)),
     ]),
     // Session key
-    'k': new FormControl(7, [
+    'k': new FormControl(1616, [
     ]),
 
     // Private key. 1 < x < p - 1
-    'x': new FormControl(35, [
+    'x': new FormControl(5049, [
     ]),
     // Public key. h = g ^ x (mod p)
-    'h': new FormControl(197, [
+    'h': new FormControl(5581, [
     ]),
 
 
@@ -75,8 +80,17 @@ export class ElgamalComponent implements OnInit {
   });
 
   constructor() {
-    this.cryptosystem.encrypt();
+    this.cryptosystem.plaintext = 'crypto';
+
+    this.cryptosystem.p = 13499;
+    this.cryptosystem.g = 13496;
+    this.cryptosystem.x = 5049;
+    this.cryptosystem.k = 1616;
+    this.cryptosystem.h = 5581;
+
+    this.cryptosystem.encrypt(1616);
   }
+
   /**
    * ngOnInit
    */
@@ -105,25 +119,70 @@ export class ElgamalComponent implements OnInit {
 
     this.form.get('p')?.valueChanges.subscribe({
       next: (newValue: number) => {
-        if (isPrime(newValue)) {
-          this.cryptosystem.clearLogs();
-          this.cryptosystem.p = newValue;
-          // this.cryptosystem.generateG();
-          this.cryptosystem.generateKeys();
+        if (!isPrime(newValue)) {
+          return;
+        }
+        const k = this.form.get('p')?.value;
+        // this.cryptosystem.clearLogs();
+        this.cryptosystem.p = newValue;
+        // this.cryptosystem.generateG();
+        // this.cryptosystem.generateKeys();
+        this.updateKeys();
+        this.encrypt(k);
+
+      }
+    });
+    this.form.get('g')?.valueChanges.subscribe({
+      next: (newValue: number) => {
+        if (Number.isFinite(newValue)) {
+          const p = this.form.get('p')?.value;
+          const g = newValue;
+          this.gHint = `Order of ${g}: ${findOrderInGroup(g, p)}`;
+          this.cryptosystem.g = newValue;
+          // this.cryptosystem.generateKeys();
           this.updateKeys();
-          this.encrypt();
+        }
+      }
+
+    });
+    this.form.get('x')?.valueChanges.subscribe({
+      next: (newValue: number) => {
+        if (Number.isFinite(newValue)) {
+          this.cryptosystem.g = newValue;
         }
       }
     });
+    this.form.get('h')?.valueChanges.subscribe({
+      next: (newValue: number) => {
+        if (Number.isFinite(newValue)) {
+          this.cryptosystem.h = newValue;
+        }
+      }
+    });
+    this.form.get('k')?.valueChanges.subscribe({
+      next: (newValue: number) => {
+        if (Number.isFinite(newValue)) {
+          this.cryptosystem.k = newValue;
+        }
+      }
+    });
+  }
 
+  /**
+   * Generate keys
+   */
+  generateKeys() {
+    this.cryptosystem.generateKeys();
+    this.encrypt();
   }
 
   /**
    * Run encryption
    */
-  encrypt() {
+  encrypt(sessionKey?: number) {
     this.cryptosystem.clearLogs();
-    this.encrypted = this.cryptosystem.encrypt();
+    this.encrypted = this.cryptosystem.encrypt(sessionKey);
+    this.updateKeys();
   }
 
   /**
@@ -138,12 +197,11 @@ export class ElgamalComponent implements OnInit {
    * Update keys
    */
   updateKeys() {
-    this.form.get('g')?.setValue(this.cryptosystem.g);
-    this.form.get('k')?.setValue(this.cryptosystem.k);
+    this.form.get('g')?.setValue(this.cryptosystem.g, { emitEvent: false });
+    this.form.get('k')?.setValue(this.cryptosystem.k, { emitEvent: false });
 
-    this.form.get('x')?.setValue(this.cryptosystem.x);
-    this.form.get('h')?.setValue(this.cryptosystem.h);
-
+    this.form.get('x')?.setValue(this.cryptosystem.x, { emitEvent: false });
+    this.form.get('h')?.setValue(this.cryptosystem.h, { emitEvent: false });
   }
 
   /**

@@ -3,17 +3,6 @@
 </h1>
 
 
-<!-- <div class="flex">
-  <div class="p-1"> Plaintext </div>
-  <div class="bold p-1"> {{ plaintextString }} </div>
-</div>
-
-<div class="flex">
-  <div class="p-1"> Ciphertext </div>
-  <div class="bold p-1"> {{ ciphertextString }} </div>
-</div> -->
-
-
 <mat-divider class="mb-2"></mat-divider>
 <!-- -------------------------------------------- -->
 
@@ -25,13 +14,14 @@
 
   <div class="flex mb-2">
     <div class="p-2 flex-grow-1 col">
-      <button (click)="encrypt()" mat-flat-button>
+      <button (click)="encrypt(form.get('k')?.value)" mat-flat-button>
         {{ 'common.encrypt' | translate }}
       </button>
-
     </div>
     <div class="p-2 flex-grow-1 col">
-
+      <button (click)="generateKeys()" mat-flat-button>
+        {{ 'common.generate-keys' | translate }}
+      </button>
     </div>
   </div>
 
@@ -133,8 +123,11 @@
       <mat-form-field class="w100">
         <mat-label>{{ 'common.number' | translate }} g</mat-label>
         <input matInput formControlName="g" type="number">
-        @if (form.get('g')?.hasError('factor')) {
+        <!-- @if (form.get('g')?.hasError('factor')) {
         <mat-error>{{form.get('g')?.errors?.['factor'].value}}</mat-error>
+        } -->
+        @if (gHint) {
+        <mat-hint>{{gHint}}</mat-hint>
         }
       </mat-form-field>
 
