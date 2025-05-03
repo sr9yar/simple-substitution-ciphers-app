@@ -1,0 +1,60 @@
+<h1>
+  {{ 'common.fermat-primality-test' | translate }}
+</h1>
+
+
+<mat-divider class="mb-2"></mat-divider>
+<!-- -------------------------------------------- -->
+
+
+<form [formGroup]="form">
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+      <button (click)="test()" mat-flat-button>
+        {{ 'common.test' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+      <div class="box-outlined">
+        <pre>{{ result | async }}</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 min35 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }}</mat-label>
+        <input matInput formControlName="n" type="number">
+      </mat-form-field>
+
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number-of-iterations' | translate }}</mat-label>
+        <input matInput formControlName="k" type="number">
+      </mat-form-field>
+
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+</form>
+
+
+<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
+<app-execution-log [logs]="logs"></app-execution-log>

@@ -11,6 +11,7 @@ import { RsaComponent } from './components/rsa/rsa.component';
 import { RabinComponent } from './components/rabin/rabin.component';
 import { ElgamalComponent } from './components/elgamal/elgamal.component';
 import { EncodingsComponent } from './components/encodings/encodings/encodings.component';
+import { FermatPrimalityTestComponent } from './components/fermat-primality-test/fermat-primality-test.component';
 
 export const routes: Routes = [
   // -----------------------
@@ -67,6 +68,11 @@ export const routes: Routes = [
   {
     path: 'encodings',
     component: EncodingsComponent,
+  },
+
+  {
+    path: 'fermat',
+    component: FermatPrimalityTestComponent,
   },
 
   {
