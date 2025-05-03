@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 
 import { ElGamal, isPrime } from '@sr9yar/public-key-cryptography';
 import { primeValidator } from '../../validators/prime.validator';
+import { factorValidator } from '../../validators/factor.validator';
 
 
 
@@ -56,6 +57,7 @@ export class ElgamalComponent implements OnInit {
 
     // g ∈ F*ₚ
     'g': new FormControl(3, [
+      factorValidator(this.getP.bind(this)),
     ]),
     // Session key
     'k': new FormControl(7, [
@@ -104,10 +106,12 @@ export class ElgamalComponent implements OnInit {
     this.form.get('p')?.valueChanges.subscribe({
       next: (newValue: number) => {
         if (isPrime(newValue)) {
+          this.cryptosystem.clearLogs();
           this.cryptosystem.p = newValue;
-          this.cryptosystem.generateG();
+          // this.cryptosystem.generateG();
           this.cryptosystem.generateKeys();
           this.updateKeys();
+          this.encrypt();
         }
       }
     });
@@ -118,6 +122,7 @@ export class ElgamalComponent implements OnInit {
    * Run encryption
    */
   encrypt() {
+    this.cryptosystem.clearLogs();
     this.encrypted = this.cryptosystem.encrypt();
   }
 
@@ -125,6 +130,7 @@ export class ElgamalComponent implements OnInit {
    * Run decryption
    */
   decrypt() {
+    this.cryptosystem.clearLogs();
     this.decrypted = this.cryptosystem.decrypt();
   }
 
@@ -138,6 +144,13 @@ export class ElgamalComponent implements OnInit {
     this.form.get('x')?.setValue(this.cryptosystem.x);
     this.form.get('h')?.setValue(this.cryptosystem.h);
 
+  }
+
+  /**
+   * Get p
+   */
+  getP(): number {
+    return this.cryptosystem.p;
   }
 
   /**

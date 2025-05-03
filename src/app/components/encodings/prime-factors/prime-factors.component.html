@@ -1,1 +1,27 @@
-<p>prime-factors works!</p>
+<form [formGroup]="form">
+
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }}</mat-label>
+        <textarea #autosize="cdkTextareaAutosize" cdkTextareaAutosize matInput formControlName="input"
+          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+      <div class="box-outlined">
+        <pre>{{output}}</pre>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+</form>

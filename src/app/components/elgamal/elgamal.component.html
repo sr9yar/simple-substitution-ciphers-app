@@ -133,6 +133,9 @@
       <mat-form-field class="w100">
         <mat-label>{{ 'common.number' | translate }} g</mat-label>
         <input matInput formControlName="g" type="number">
+        @if (form.get('g')?.hasError('factor')) {
+        <mat-error>{{form.get('g')?.errors?.['factor'].value}}</mat-error>
+        }
       </mat-form-field>
 
     </div>

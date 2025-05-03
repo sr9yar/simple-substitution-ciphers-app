@@ -56,5 +56,9 @@
   "encodings.encodings": "Кодировки",
   "encodings.string": "Строка",
   "encodings.string-to-base64": "Строка в base64",
-  "encodings.base64-to-string": "Base64 в строку"
+  "encodings.base64-to-string": "Base64 в строку",
+  "encodings.prime-factors": "Простые делители",
+  "encodings.all-factors": "Все делители",
+  "encodings.first-1k-prime-numbers": "Первые 1000 простых чисел",
+  "encodings.10k-prime-numbers": "Простые числа больше 10 000"
 }

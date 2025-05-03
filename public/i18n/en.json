@@ -56,5 +56,9 @@
   "encodings.encodings": "Encodings",
   "encodings.string": "String",
   "encodings.string-to-base64": "String to base64",
-  "encodings.base64-to-string": "Base64 to string"
+  "encodings.base64-to-string": "Base64 to string",
+  "encodings.prime-factors": "Prime factors",
+  "encodings.all-factors": "All factors",
+  "encodings.first-1k-prime-numbers": "First 1000 prime numbers",
+  "encodings.10k-prime-numbers": "Prime numbers over 10 000"
 }
