@@ -11,6 +11,10 @@
     <button mat-menu-item [matMenuTriggerFor]="pkc" routerLink="/assignment-2">
       {{ 'pkc.pkc' | translate }}
     </button>
+    <button mat-menu-item [routerLink]="['digital-signature']">
+      {{ 'common.digital-signature' | translate }}
+    </button>
+
     <button mat-menu-item [routerLink]="['encodings']">
       {{ 'encodings.encodings' | translate }}
     </button>

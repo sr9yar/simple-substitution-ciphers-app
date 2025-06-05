@@ -12,6 +12,7 @@ import { RabinComponent } from './components/rabin/rabin.component';
 import { ElgamalComponent } from './components/elgamal/elgamal.component';
 import { EncodingsComponent } from './components/encodings/encodings/encodings.component';
 import { FermatPrimalityTestComponent } from './components/fermat-primality-test/fermat-primality-test.component';
+import { DigitalSignatureComponent } from './components/digital-signature/digital-signature.component';
 
 export const routes: Routes = [
   // -----------------------
@@ -44,6 +45,11 @@ export const routes: Routes = [
   {
     path: 'test-data',
     component: TestDataComponent,
+  },
+  // -----------------------
+  {
+    path: 'digital-signature',
+    component: DigitalSignatureComponent,
   },
   // -----------------------
 

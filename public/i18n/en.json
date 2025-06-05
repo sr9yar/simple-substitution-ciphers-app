@@ -60,6 +60,11 @@
   "common.test": "Test",
   "common.generate-keys": "Generate keys",
   "common.number-of-iterations": "Number of iterations",
+  "common.digital-signature": "Digital signature",
+  "common.random-number": "Random number",
+  "digital-signature.log-adding-points": "Log adding points",
+  "digital-signature.sign": "Sign",
+  "digital-signature.verify": "Verify",
   "encodings.encodings": "Encodings",
   "encodings.string": "String",
   "encodings.string-to-base64": "String to base64",
@@ -67,5 +72,5 @@
   "encodings.prime-factors": "Prime factors",
   "encodings.all-factors": "All factors",
   "encodings.first-1k-prime-numbers": "First 1000 prime numbers",
-  "encodings.10k-prime-numbers": "Prime numbers over 10 000"
+  "encodings.10k-prime-numbers": "Prime numbers over 10 000",
 }
