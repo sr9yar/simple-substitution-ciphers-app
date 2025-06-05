@@ -67,7 +67,7 @@ export class DigitalSignatureComponent {
     ]),
 
     // message to sign
-    'message': new FormControl('APR'),
+    'message': new FormControl('MAY'),
     // signature
     'signature': new FormControl(),
     // logAddingPoints
@@ -81,13 +81,16 @@ export class DigitalSignatureComponent {
     */
   ngOnInit(): void {
 
+    const M = this.form.get('message')?.value;
+    this.gost.M = M;
+
     // this.form.get('p')?.setValue(this.gost.p, { emitEvent: false });
     // this.form.get('a')?.setValue(this.gost.a, { emitEvent: false });
     // this.form.get('b')?.setValue(this.gost.b, { emitEvent: false });
     // this.form.get('logAddingPoints')?.setValue(this.gost.logAddingPoints, { emitEvent: false });
 
-    this.form.get('message')?.setValue(this.gost.M, { emitEvent: false });
-    this.form.get('signature')?.setValue(this.gost.signature, { emitEvent: false });
+    //this.form.get('message')?.setValue(this.gost.M, { emitEvent: false });
+    // this.form.get('signature')?.setValue(this.gost.signature, { emitEvent: false });
 
     this.form.get('p')?.valueChanges.subscribe({
       next: (newValue: number) => {
@@ -143,7 +146,9 @@ export class DigitalSignatureComponent {
    * Sign message
    */
   sign(): void {
-    const signature = this.gost.sign();
+    this.gost.clearLogs();
+    const M = this.form.get('message')?.value;
+    const signature = this.gost.sign(M);
     this.signature = signature;
     // this.form.get('signature')?.setValue(signature, { emitEvent: false });
   }

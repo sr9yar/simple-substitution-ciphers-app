@@ -22,7 +22,7 @@
     "@colsen1991/ngx-translate-extract-marker": "^3.0.1",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
-    "@sr9yar/digital-signature": "^0.0.3",
+    "@sr9yar/digital-signature": "^0.0.4",
     "@sr9yar/public-key-cryptography": "^0.0.27",
     "@swimlane/ngx-charts": "^22.0.0-alpha.0",
     "rxjs": "~7.8.0",
