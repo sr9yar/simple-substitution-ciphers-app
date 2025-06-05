@@ -15,7 +15,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { CommonModule } from '@angular/common';
 import { FermatPrimalityTest } from '@sr9yar/public-key-cryptography';
-import { BehaviorSubject, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 
 

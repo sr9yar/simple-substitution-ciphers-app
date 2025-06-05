@@ -9,33 +9,85 @@
 
 <form [formGroup]="form">
 
+
+
   <!-- -------------------------------------------- -->
 
 
-  <div class="flex mb-2">
+  <div class="flex mb-1">
     <div class="p-2 flex-grow-1 col">
-      <button (click)="sign()" mat-flat-button>
-        {{ 'common.sign' | translate }}
-      </button>
+
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.prime-number' | translate }} p </mat-label>
+        <input matInput formControlName="p" type="number">
+        @if (form.get('p')?.hasError('prime')) {
+        <mat-error>{{form.get('p')?.errors?.['prime'].value}}</mat-error>
+        }
+      </mat-form-field>
+
     </div>
     <div class="p-2 flex-grow-1 col">
-      <button (click)="verify()" mat-flat-button>
-        {{ 'common.verify' | translate }}
-      </button>
+      <div class="w100">
+        &nbsp;
+      </div>
     </div>
   </div>
 
   <!-- -------------------------------------------- -->
 
+  <div class="flex mb-1">
 
-  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1 col">
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.random-number' | translate }} a</mat-label>
+        <input matInput formControlName="a" type="number">
+        <!-- @if (form.get('g')?.hasError('factor')) {
+          <mat-error>{{form.get('g')?.errors?.['factor'].value}}</mat-error>
+        } -->
+        <!-- @if (gHint) {
+          <mat-hint>{{gHint}}</mat-hint>
+        } -->
+      </mat-form-field>
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.random-number' | translate }} b</mat-label>
+        <input matInput formControlName="b" type="number">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-1">
+    <div class="p-2 flex-grow-1 min35 col">
+
+      <div class="box-outlined">
+        <pre>m = {{m}}</pre>
+      </div>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+      <div class="box-outlined">
+        <pre>q = {{q}}</pre>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-1">
     <div class="p-2 flex-grow-1 min35 col">
 
       <mat-form-field class="w100">
         <mat-label>
-          {{ 'common.digital-signature' | translate }}
+          {{ 'digital-signature.message' | translate }}
         </mat-label>
-        <textarea formControlName="plaintext" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        <textarea formControlName="message" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
 
@@ -53,31 +105,53 @@
 
   <!-- -------------------------------------------- -->
 
+  <div class="flex mb-1">
+    <div class="p-2 flex-grow-1 min35 col">
 
-  <div class="flex mb-2">
-    <div class="p-2 flex-grow-1 col">
-      <!-- <button (click)="decrypt()" mat-flat-button>
-        {{ 'common.decrypt' | translate }}
-      </button> -->
+      <mat-slide-toggle formControlName="logAddingPoints">
+        {{ 'digital-signature.log-adding-points' | translate }}
+      </mat-slide-toggle>
 
     </div>
+
     <div class="p-2 flex-grow-1 col">
 
     </div>
   </div>
 
+
   <!-- -------------------------------------------- -->
 
 
+  <div class="flex mb-5">
+    <div class="p-2 flex-grow-1 col">
 
-  <div class="flex mb-2">
+      <button (click)="sign()" mat-flat-button>
+        {{ 'digital-signature.sign' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+      <button (click)="generateParams()" mat-flat-button>
+        {{ 'digital-signature.generate-params' | translate }}
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-1">
     <div class="p-2 flex-grow-1 min35 col">
 
       <mat-form-field class="w100">
         <mat-label>
-          {{ 'common.ciphertext' | translate }}
+          {{ 'digital-signature.signature-to-verify' | translate }}
         </mat-label>
-        <textarea matInput formControlName="ciphertext" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        <textarea matInput formControlName="signature" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
 
@@ -96,91 +170,19 @@
   <!-- -------------------------------------------- -->
 
 
-  <div class="flex mb-2">
+  <div class="flex mb-5">
     <div class="p-2 flex-grow-1 col">
-
-      <mat-form-field class="w100">
-        <mat-label>{{ 'common.number' | translate }} p ({{ 'common.prime-number' | translate }})</mat-label>
-        <input matInput formControlName="p" type="number">
-        @if (form.get('p')?.hasError('prime')) {
-        <mat-error>{{form.get('p')?.errors?.['prime'].value}}</mat-error>
-        }
-      </mat-form-field>
-
+      <button (click)="verify()" mat-flat-button>
+        {{ 'digital-signature.verify' | translate }}
+      </button>
     </div>
     <div class="p-2 flex-grow-1 col">
-      <div class="w100">
-        &nbsp;
-      </div>
-    </div>
-  </div>
-
-  <!-- -------------------------------------------- -->
-
-  <div class="flex mb-2">
-    <div class="p-2 flex-grow-1 col">
-
-      <mat-form-field class="w100">
-        <mat-label>{{ 'common.number' | translate }} g</mat-label>
-        <input matInput formControlName="g" type="number">
-        <!-- @if (form.get('g')?.hasError('factor')) {
-        <mat-error>{{form.get('g')?.errors?.['factor'].value}}</mat-error>
-        } -->
-        <!-- @if (gHint) {
-        <mat-hint>{{gHint}}</mat-hint>
-        } -->
-      </mat-form-field>
-
-    </div>
-    <div class="p-2 flex-grow-1 col">
-
-      <mat-form-field class="w100">
-        <mat-label>{{ 'common.number' | translate }} k ({{ 'common.session-key' | translate }})</mat-label>
-        <input matInput formControlName="k" type="number">
-      </mat-form-field>
 
     </div>
   </div>
 
   <!-- -------------------------------------------- -->
 
-  <div class="flex mb-2">
-    <div class="p-2 flex-grow-1 col">
-
-      <mat-form-field class="w100">
-        <mat-label>{{ 'common.number' | translate }} x ({{ 'common.private-key' | translate }})</mat-label>
-        <input matInput formControlName="x" type="number">
-      </mat-form-field>
-
-    </div>
-    <div class="p-2 flex-grow-1 col">
-
-      <mat-form-field class="w100">
-        <mat-label>{{ 'common.number' | translate }} h ({{ 'common.public-key' | translate }})</mat-label>
-        <input matInput formControlName="h" type="number">
-      </mat-form-field>
-
-    </div>
-  </div>
-
-  <!-- -------------------------------------------- -->
-
-  <div class="flex mb-2">
-    <div class="p-2 flex-grow-1 col">
-      <div class="box-outlined">
-        <!-- <pre> {{ 'common.blocksize' | translate }}: {{blocksize}}</pre> -->
-      </div>
-    </div>
-
-    <div class="p-2 flex-grow-1 col">
-      <div class="w100">
-        &nbsp;
-      </div>
-    </div>
-
-  </div>
-
-  <!-- -------------------------------------------- -->
 
 
 </form>

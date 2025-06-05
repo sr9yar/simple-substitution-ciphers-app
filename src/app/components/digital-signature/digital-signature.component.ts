@@ -19,6 +19,7 @@ import {
 } from '@sr9yar/digital-signature';
 import { primeValidator } from '../../validators/prime.validator';
 import { isPrime } from '@sr9yar/public-key-cryptography';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -30,7 +31,7 @@ import { isPrime } from '@sr9yar/public-key-cryptography';
     MatFormFieldModule,
     MatDividerModule,
     MatSliderModule,
-
+    MatSlideToggleModule,
     ReactiveFormsModule,
     MatButtonModule,
     CommonModule,
@@ -44,31 +45,33 @@ import { isPrime } from '@sr9yar/public-key-cryptography';
 })
 export class DigitalSignatureComponent {
 
-  gost: any = new Gost(101);
+  gost: Gost = new Gost(13499, 110, 159);
 
-  signature: string = '';
+  signature: string = '[signature]';
+
+  m: number = 13628;
+  q: number = 6814;
 
   form: FormGroup = new FormGroup({
 
     // Prime
-    'p': new FormControl(134999, [
+    'p': new FormControl(13499, [
       primeValidator(),
     ]),
 
     //
-    'a': new FormControl(4, [
+    'a': new FormControl(110, [
     ]),
     //
-    'b': new FormControl(1, [
+    'b': new FormControl(159, [
     ]),
 
+    // message to sign
+    'message': new FormControl('APR'),
     // signature
     'signature': new FormControl(),
-    // 
-    'verified': new FormControl(),
-
-    // 
     // logAddingPoints
+    'logAddingPoints': new FormControl(),
   });
 
   constructor() { }
@@ -77,9 +80,14 @@ export class DigitalSignatureComponent {
     * ngOnInit
     */
   ngOnInit(): void {
-    this.form.get('p')?.setValue(this.gost.p);
-    this.form.get('a')?.setValue(this.gost.p);
-    this.form.get('b')?.setValue(this.gost.p);
+
+    // this.form.get('p')?.setValue(this.gost.p, { emitEvent: false });
+    // this.form.get('a')?.setValue(this.gost.a, { emitEvent: false });
+    // this.form.get('b')?.setValue(this.gost.b, { emitEvent: false });
+    // this.form.get('logAddingPoints')?.setValue(this.gost.logAddingPoints, { emitEvent: false });
+
+    this.form.get('message')?.setValue(this.gost.M, { emitEvent: false });
+    this.form.get('signature')?.setValue(this.gost.signature, { emitEvent: false });
 
     this.form.get('p')?.valueChanges.subscribe({
       next: (newValue: number) => {
@@ -100,13 +108,44 @@ export class DigitalSignatureComponent {
       }
     });
 
+    this.form.get('logAddingPoints')?.valueChanges.subscribe({
+      next: (newValue: boolean) => {
+
+        this.gost.logAddingPoints = !!newValue;
+
+        if (!!this.gost.logAddingPoints) {
+
+          const p = this.form.get('p')?.value;
+          const a = this.form.get('a')?.value;
+          const b = this.form.get('b')?.value;
+
+          this.gost.setDomainParameters(
+            p, a, b,
+          );
+
+        }
+      }
+    });
+
+    this.form.get('message')?.valueChanges.subscribe({
+      next: (newValue: string) => {
+        this.gost.M = newValue;
+      }
+    });
+    this.form.get('signature')?.valueChanges.subscribe({
+      next: (newValue: string) => {
+        this.gost.signature = newValue;
+      }
+    });
   }
 
   /**
    * Sign message
    */
   sign(): void {
-    this.gost.sign();
+    const signature = this.gost.sign();
+    this.signature = signature;
+    // this.form.get('signature')?.setValue(signature, { emitEvent: false });
   }
 
   /**
@@ -114,6 +153,20 @@ export class DigitalSignatureComponent {
    */
   verify(): void {
     this.gost.verify();
+  }
+
+  /**
+   * Generate params
+   */
+  generateParams(): void {
+    this.gost.setDomainParameters();
+
+    this.m = this.gost.m;
+    this.q = this.gost.q;
+
+    this.form.get('p')?.setValue(this.gost.p, { emitEvent: false });
+    this.form.get('a')?.setValue(this.gost.a, { emitEvent: false });
+    this.form.get('b')?.setValue(this.gost.b, { emitEvent: false });
   }
 
   /**
@@ -133,8 +186,11 @@ export class DigitalSignatureComponent {
   /**
    * Signature verified
    */
-  get signatureVerified(): boolean {
-    return this.gost.signatureVerified;
+  get signatureVerified(): string {
+    if (typeof this.gost.signatureVerified !== 'boolean') {
+      return '';
+    }
+    return this.gost.signatureVerified ? 'VALID' : 'INVALID';
   }
 
 }
