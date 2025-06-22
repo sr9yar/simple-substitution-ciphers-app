@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { areCoprime } from 'simple-substitution-ciphers';
+import { areCoprime } from '@sr9yar/simple-substitution-ciphers';
 
 export function coprimeValidator(getAlphabetLength: Function, getCustomMessage?: Function): ValidatorFn {
 

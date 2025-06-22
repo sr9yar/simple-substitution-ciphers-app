@@ -10,7 +10,7 @@ import {
 import {
   ALPHABET_ENGLISH,
   ALPHABET_RUSSIAN,
-} from 'simple-substitution-ciphers';
+} from '@sr9yar/simple-substitution-ciphers';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

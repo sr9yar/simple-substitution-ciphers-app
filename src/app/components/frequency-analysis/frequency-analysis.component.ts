@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { take, tap } from 'rxjs';
-import { ALPHABET_FREQUENCY_ENGLISH, ALPHABET_FREQUENCY_RUSSIAN } from 'simple-substitution-ciphers';
+import { ALPHABET_FREQUENCY_ENGLISH, ALPHABET_FREQUENCY_RUSSIAN } from '@sr9yar/simple-substitution-ciphers';
 
 type SingleBarItem = {
   name: string,

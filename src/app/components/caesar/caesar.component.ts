@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ALPHABET_RUSSIAN, Caesar } from 'simple-substitution-ciphers';
+import { ALPHABET_RUSSIAN, Caesar } from '@sr9yar/simple-substitution-ciphers';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';

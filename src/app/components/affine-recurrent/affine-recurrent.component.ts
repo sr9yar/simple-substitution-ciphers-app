@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
-import { AffineRecurrent, ALPHABET_RUSSIAN, areCoprime } from 'simple-substitution-ciphers';
+import { AffineRecurrent, ALPHABET_RUSSIAN, areCoprime } from '@sr9yar/simple-substitution-ciphers';
 import { ExecutionLogComponent } from '../execution-log/execution-log.component';
 import { FrequencyAnalysisComponent } from "../frequency-analysis/frequency-analysis.component";
 import { tap } from 'rxjs';
