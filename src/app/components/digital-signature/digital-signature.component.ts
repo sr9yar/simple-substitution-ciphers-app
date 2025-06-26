@@ -45,25 +45,31 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class DigitalSignatureComponent {
 
-  gost: Gost = new Gost(13499, 110, 159);
+  //
+  gost: Gost = new Gost(101, 4, 1);
+  // gost: Gost = new Gost(13499, 110, 159);
+
+  // Ограничение m = n × q, где n ∈ ℕ. q - простое число
+  m: number = 1;
+  //
+  q: number = 1;
 
   signature: string = '[signature]';
 
-  m: number = 13628;
-  q: number = 6814;
+
 
   form: FormGroup = new FormGroup({
 
     // Prime
-    'p': new FormControl(13499, [
+    'p': new FormControl(101, [
       primeValidator(),
     ]),
 
     //
-    'a': new FormControl(110, [
+    'a': new FormControl(4, [
     ]),
     //
-    'b': new FormControl(159, [
+    'b': new FormControl(1, [
     ]),
 
     // message to sign

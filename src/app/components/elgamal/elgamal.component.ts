@@ -49,6 +49,8 @@ export class ElgamalComponent implements OnInit {
 
   decrypted: string = '[decrypted]';
 
+  signature: string = '[signature]';
+
   gHint: string = '';
 
   form: FormGroup = new FormGroup({
@@ -208,6 +210,13 @@ export class ElgamalComponent implements OnInit {
    */
   getP(): number {
     return this.cryptosystem.p;
+  }
+
+  /**
+   * Sign
+   */
+  sign() {
+    this.signature = '[signature]';
   }
 
   /**

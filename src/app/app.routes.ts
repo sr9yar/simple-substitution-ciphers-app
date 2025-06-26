@@ -13,10 +13,26 @@ import { ElgamalComponent } from './components/elgamal/elgamal.component';
 import { EncodingsComponent } from './components/encodings/encodings/encodings.component';
 import { FermatPrimalityTestComponent } from './components/fermat-primality-test/fermat-primality-test.component';
 import { DigitalSignatureComponent } from './components/digital-signature/digital-signature.component';
+import { RcrComponent } from './components/rcr/rcr.component';
+import { GfComponent } from './components/gf/gf.component';
+import { EcComponent } from './components/ec/ec.component';
 
 export const routes: Routes = [
   // -----------------------
 
+  {
+    path: 'rcr',
+    component: RcrComponent,
+  },
+  {
+    path: 'gf',
+    component: GfComponent,
+  },
+  {
+    path: 'ec',
+    component: EcComponent,
+  },
+  // -----------------------
   {
     path: 'rsa',
     component: RsaComponent,

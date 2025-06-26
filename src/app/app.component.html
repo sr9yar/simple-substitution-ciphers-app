@@ -5,6 +5,11 @@
   </button>
 
   <mat-menu #menu="matMenu">
+
+    <button mat-menu-item [matMenuTriggerFor]="algebraic" routerLink="/ec">
+      {{ 'as.algebraic-structures' | translate }}
+    </button>
+
     <button mat-menu-item [matMenuTriggerFor]="ssc" routerLink="/assignment-1">
       {{ 'common.simple-substitution-ciphers' | translate }}
     </button>
@@ -14,6 +19,7 @@
     <button mat-menu-item [routerLink]="['digital-signature']">
       {{ 'common.digital-signature' | translate }}
     </button>
+
 
     <button mat-menu-item [routerLink]="['encodings']">
       {{ 'encodings.encodings' | translate }}
@@ -51,6 +57,17 @@
     </button>
   </mat-menu>
 
+  <mat-menu #algebraic="matMenu">
+    <button mat-menu-item routerLink="/rcr">
+      {{ 'as.rcr' | translate }}
+    </button>
+    <button mat-menu-item routerLink="/gf">
+      {{ 'as.gf' | translate }}
+    </button>
+    <button mat-menu-item routerLink="/ec">
+      {{ 'as.ec' | translate}}
+    </button>
+  </mat-menu>
 
   <span>
     <img (click)="switchLanguage('en-GB')" class="flag-icon" src="/assets/flags/en-GB.png" alt="flag" />

@@ -48,6 +48,7 @@ export class RsaComponent implements OnInit {
 
   decrypted: string = '[decrypted]';
 
+  signature: string = '[signature]';
 
   form: FormGroup = new FormGroup({
     'plaintext': new FormControl(),
@@ -158,6 +159,13 @@ export class RsaComponent implements OnInit {
     this.form.get('n')?.setValue(this.cryptosystem.n);
     this.form.get('e')?.setValue(this.cryptosystem.e);
     this.form.get('d')?.setValue(this.cryptosystem.d);
+  }
+
+  /**
+   * Sign
+   */
+  sign() {
+    this.signature = '[signature]';
   }
 
   /**

@@ -1,0 +1,91 @@
+<h1>
+  {{ 'as.ec' | translate }}
+</h1>
+
+
+<mat-divider class="mb-2"></mat-divider>
+<!-- -------------------------------------------- -->
+
+
+<form [formGroup]="form">
+
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-1">
+
+    <div class="p-2 flex-grow-1 col">
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} p</mat-label>
+        <input matInput formControlName="p" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+      Eₐ,b(Fp) &nbsp;
+    </div>
+
+  </div>
+
+
+
+
+  <!-- -------------------------------------------- -->
+
+  <div class="flex mb-1">
+
+    <div class="p-2 flex-grow-1 col">
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} a</mat-label>
+        <input matInput formControlName="a" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="p-2 flex-grow-1 col">
+      <mat-form-field class="w100">
+        <mat-label>{{ 'common.number' | translate }} b</mat-label>
+        <input matInput formControlName="b" type="number">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-5">
+    <div class="p-2 flex-grow-1 col">
+
+      <button (click)="calc()" mat-flat-button>
+        {{ 'common.calculate' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1 col">
+
+      &nbsp;
+
+    </div>
+  </div>
+
+
+  <!-- -------------------------------------------- -->
+
+
+
+
+</form>
+
+
+
+<!-- -------------------------------------------- -->
+
+
+
+<mat-divider *ngIf="hasLogs" class="mb-2"></mat-divider>
+<app-execution-log [logs]="logs"></app-execution-log>

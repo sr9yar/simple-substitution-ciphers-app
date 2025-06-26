@@ -62,6 +62,8 @@
   "common.generate-keys": "Генерировать ключи",
   "common.digital-signature": "Цифровая подпись",
   "common.random-number": "Случайное число",
+  "common.sign": "Подписать",
+  "common.calculate": "Расчитать",
   "digital-signature.log-adding-points": "Подробно отражать в логах сложение точек",
   "digital-signature.sign": "Подписать",
   "digital-signature.verify": "Верифицировать",
@@ -75,5 +77,9 @@
   "encodings.prime-factors": "Простые делители",
   "encodings.all-factors": "Все делители",
   "encodings.first-1k-prime-numbers": "Первые 1000 простых чисел",
-  "encodings.10k-prime-numbers": "Простые числа больше 10 000"
+  "encodings.10k-prime-numbers": "Простые числа больше 10 000",
+  "as.algebraic-structures": "Алгебраические структуры",
+  "as.ec": "Эллиптическая кривая",
+  "as.gf": "Поле Галуа",
+  "as.rcr": "Кольцо классов вычетов"
 }

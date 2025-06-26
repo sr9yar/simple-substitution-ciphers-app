@@ -4,10 +4,33 @@
 
 
 <mat-divider class="mb-2"></mat-divider>
+
+
 <!-- -------------------------------------------- -->
 
 
 <form [formGroup]="form">
+
+
+
+  <!-- -------------------------------------------- -->
+
+
+  <div class="flex mb-2">
+    <div class="p-2 flex-grow-1">
+      <button (click)="sign()" mat-flat-button>
+        {{ 'common.sign' | translate }}
+      </button>
+
+    </div>
+    <div class="p-2 flex-grow-1">
+      <div class="box-outlined">
+        <pre>{{signature}}</pre>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- -------------------------------------------- -->
 
